@@ -549,6 +549,186 @@ const CONTENT_PRESETS = [{
   fontBody: "Noto Sans TC",
   headSize: 32
 }];
+
+/* Full-carousel kits — one click builds a complete multi-page post */
+const CAROUSEL_KITS = [{
+  id: "kit-tips",
+  label: "知識懶人包",
+  desc: "封面 → 重點清單 → 兩頁解說 → 結尾",
+  pages: [{
+    pageType: "cover",
+    topLabel: "懶人包",
+    bigNumber: "5",
+    headline: "個你必須知道的\n{hl}實用技巧{/hl}",
+    subtitle: "看完直接上手",
+    layout: "number-left",
+    decoStyle: "line",
+    accent: "#FFD600",
+    bgColor: "#111111",
+    textColor: "#ffffff",
+    headSize: 34,
+    numSize: 120,
+    bottomTag: "@your_handle"
+  }, {
+    pageType: "list",
+    headline: "本篇{hl}重點{/hl}",
+    listItems: ["技巧一：先寫這裡", "技巧二：再寫這裡", "技巧三：接著寫", "技巧四：快完成了", "技巧五：最後一個"],
+    listStyle: "number",
+    accent: "#FFD600",
+    bgColor: "#111111",
+    textColor: "#ffffff",
+    headSize: 26,
+    bodySize: 15
+  }, {
+    pageType: "img-top",
+    headline: "技巧 {hl}01{/hl}",
+    bodyText: "在這裡說明第一個技巧，\n建議搭配一張示意圖。",
+    accent: "#FFD600",
+    bgColor: "#111111",
+    textColor: "#ffffff",
+    headSize: 28,
+    bodySize: 15
+  }, {
+    pageType: "img-top",
+    headline: "技巧 {hl}02{/hl}",
+    bodyText: "在這裡說明第二個技巧，\n文字保持精簡有力。",
+    accent: "#FFD600",
+    bgColor: "#111111",
+    textColor: "#ffffff",
+    headSize: 28,
+    bodySize: 15
+  }, {
+    pageType: "cta",
+    topLabel: "謝謝你看到這裡",
+    headline: "覺得實用\n記得{hl}收藏起來{/hl}",
+    listItems: ["按讚 ❤️", "收藏 🔖", "分享 ➤"],
+    bottomTag: "@your_handle",
+    accent: "#FFD600",
+    bgColor: "#111111",
+    textColor: "#ffffff",
+    headSize: 32
+  }]
+}, {
+  id: "kit-steps",
+  label: "教學步驟",
+  desc: "封面 → Step 1-3 → 結尾",
+  pages: [{
+    pageType: "cover",
+    topLabel: "完整教學",
+    bigNumber: "3",
+    headline: "步驟學會\n{hl}IG輪播排版{/hl}",
+    subtitle: "零基礎也能上手",
+    layout: "number-left",
+    decoStyle: "corners",
+    accent: "#00d2ff",
+    bgColor: "#0a0e1a",
+    textColor: "#d0e0f8",
+    headSize: 34,
+    numSize: 110,
+    bottomTag: "SWIPE →"
+  }, {
+    pageType: "text-top",
+    headline: "Step {hl}01{/hl}",
+    bodyText: "第一步的操作說明，\n下方可以放操作截圖。",
+    accent: "#00d2ff",
+    bgColor: "#0a0e1a",
+    textColor: "#d0e0f8",
+    headSize: 30,
+    bodySize: 15
+  }, {
+    pageType: "text-top",
+    headline: "Step {hl}02{/hl}",
+    bodyText: "第二步的操作說明，\n保持一頁一個重點。",
+    accent: "#00d2ff",
+    bgColor: "#0a0e1a",
+    textColor: "#d0e0f8",
+    headSize: 30,
+    bodySize: 15
+  }, {
+    pageType: "text-top",
+    headline: "Step {hl}03{/hl}",
+    bodyText: "第三步完成！\n記得檢查成果再匯出。",
+    accent: "#00d2ff",
+    bgColor: "#0a0e1a",
+    textColor: "#d0e0f8",
+    headSize: 30,
+    bodySize: 15
+  }, {
+    pageType: "cta",
+    topLabel: "學會了嗎？",
+    headline: "跟著做一次\n{hl}馬上上手{/hl}",
+    listItems: ["收藏教學 🔖", "分享給朋友 ➤"],
+    bottomTag: "@your_handle",
+    accent: "#00d2ff",
+    bgColor: "#0a0e1a",
+    textColor: "#d0e0f8",
+    headSize: 32
+  }]
+}, {
+  id: "kit-quotes",
+  label: "金句語錄",
+  desc: "封面 → 三頁金句 → 結尾",
+  pages: [{
+    pageType: "cover",
+    topLabel: "每週語錄",
+    bigNumber: "",
+    headline: "寫給\n{hl}努力中的你{/hl}",
+    subtitle: "三句話，三個提醒",
+    layout: "center",
+    decoStyle: "corners",
+    accent: "#c9a84c",
+    bgColor: "#0c0c0c",
+    textColor: "#e8e0d4",
+    fontHead: "Noto Serif TC",
+    fontBody: "Noto Serif TC",
+    headSize: 42
+  }, {
+    pageType: "quote",
+    headline: "慢慢來\n{hl}比較快{/hl}",
+    subtitle: "— 給急著長大的你",
+    accent: "#c9a84c",
+    bgColor: "#0c0c0c",
+    textColor: "#e8e0d4",
+    fontHead: "Noto Serif TC",
+    fontBody: "Noto Serif TC",
+    headSize: 42,
+    subSize: 14
+  }, {
+    pageType: "quote",
+    headline: "你的時間有限\n別活在{hl}別人的期待{/hl}裡",
+    subtitle: "— 提醒自己",
+    accent: "#c9a84c",
+    bgColor: "#0c0c0c",
+    textColor: "#e8e0d4",
+    fontHead: "Noto Serif TC",
+    fontBody: "Noto Serif TC",
+    headSize: 34,
+    subSize: 14
+  }, {
+    pageType: "quote",
+    headline: "成功不是終點\n{hl}持續{/hl}才是",
+    subtitle: "— 共勉之",
+    accent: "#c9a84c",
+    bgColor: "#0c0c0c",
+    textColor: "#e8e0d4",
+    fontHead: "Noto Serif TC",
+    fontBody: "Noto Serif TC",
+    headSize: 38,
+    subSize: 14
+  }, {
+    pageType: "cta",
+    topLabel: "哪句最打中你？",
+    headline: "留言告訴我\n順手{hl}分享出去{/hl}",
+    listItems: ["收藏 🔖", "分享 ➤"],
+    bottomTag: "@your_handle",
+    accent: "#c9a84c",
+    bgColor: "#0c0c0c",
+    textColor: "#e8e0d4",
+    fontHead: "Noto Serif TC",
+    fontBody: "Noto Serif TC",
+    headSize: 30
+  }]
+}];
 function makePage(type = "cover", base = {}) {
   const defaults = {
     pageType: type,
@@ -572,6 +752,9 @@ function makePage(type = "cover", base = {}) {
     bodySize: 15,
     imgColor: "#222230",
     imgData: null,
+    bgImage: null,
+    bgOverlay: 0.35,
+    lineHScale: 1,
     listItems: type === "cta" ? ["按讚 ❤️", "收藏 🔖", "分享 ➤"] : ["項目一", "項目二", "項目三"],
     listStyle: "number",
     showPageNum: false
@@ -894,6 +1077,55 @@ const roundRectPath = (ctx, x, y, w, h, r) => {
   ctx.arcTo(x, y + h, x, y, r);
   ctx.arcTo(x, y, x + w, y, r);
   ctx.closePath();
+};
+
+/* ══════════ MINIMAL ZIP WRITER (store method — PNG/JPG are already compressed) ══════════ */
+const _crcTable = (() => {
+  const t = new Uint32Array(256);
+  for (let n = 0; n < 256; n++) {
+    let c = n;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ c >>> 1 : c >>> 1;
+    t[n] = c;
+  }
+  return t;
+})();
+const crc32 = u8 => {
+  let c = 0xFFFFFFFF;
+  for (let i = 0; i < u8.length; i++) c = _crcTable[(c ^ u8[i]) & 0xFF] ^ c >>> 8;
+  return (c ^ 0xFFFFFFFF) >>> 0;
+};
+// files: [{name:string, data:Uint8Array}] → application/zip Blob
+const buildZip = files => {
+  const enc = new TextEncoder();
+  const parts = [];
+  const centrals = [];
+  let offset = 0;
+  const DOSTIME = 0x6000,
+    DOSDATE = 2026 - 1980 << 9 | 6 << 5 | 15; // fixed stamp — deterministic output
+  const u16 = v => new Uint8Array([v & 255, v >>> 8 & 255]);
+  const u32 = v => new Uint8Array([v & 255, v >>> 8 & 255, v >>> 16 & 255, v >>> 24 & 255]);
+  for (const f of files) {
+    const name = enc.encode(f.name);
+    const crc = crc32(f.data);
+    const sz = f.data.length;
+    parts.push(u32(0x04034b50), u16(20), u16(0x0800), u16(0), u16(DOSTIME), u16(DOSDATE), u32(crc), u32(sz), u32(sz), u16(name.length), u16(0), name, f.data);
+    centrals.push({
+      name,
+      crc,
+      sz,
+      offset
+    });
+    offset += 30 + name.length + sz;
+  }
+  const cdStart = offset;
+  for (const c of centrals) {
+    parts.push(u32(0x02014b50), u16(20), u16(20), u16(0x0800), u16(0), u16(DOSTIME), u16(DOSDATE), u32(c.crc), u32(c.sz), u32(c.sz), u16(c.name.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(c.offset), c.name);
+    offset += 46 + c.name.length;
+  }
+  parts.push(u32(0x06054b50), u16(0), u16(0), u16(centrals.length), u16(centrals.length), u32(offset - cdStart), u32(cdStart), u16(0));
+  return new Blob(parts, {
+    type: "application/zip"
+  });
 };
 
 /* ══════════ TEXT MEASUREMENT & AUTO-FIT ══════════ */
@@ -1245,10 +1477,14 @@ function saveToStorage(data) {
     pages: data.pages.map(p => ({
       ...p,
       _imgEl: undefined,
-      imgData: keepImg ? p.imgData || null : null
+      _shadow: undefined,
+      _shadowScale: undefined,
+      imgData: keepImg ? p.imgData || null : null,
+      bgImage: keepImg ? p.bgImage || null : null
     })),
     curIdx: data.curIdx,
-    ratioId: data.ratioId
+    ratioId: data.ratioId,
+    exportFmt: data.exportFmt
   });
   try {
     localStorage.setItem(STORAGE_KEY, build(true));
@@ -1413,11 +1649,17 @@ function App() {
   const [copied, setCopied] = useState(false);
   const [showAddMenu, setShowAddMenu] = useState(false);
   const [toast, setToast] = useState(null);
-  const [exportFmt, setExportFmt] = useState("png");
+  const [exportFmt, setExportFmt] = useState(saved?.exportFmt || "png");
+  const [showGuide, setShowGuide] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+  const [kitArm, setKitArm] = useState(null);
   const fileRef = useRef(null);
   const addBtnRef = useRef(null);
   const projFileRef = useRef(null);
+  const bgFileRef = useRef(null);
   const toastTimerRef = useRef(null);
+  const kitArmTimerRef = useRef(null);
+  const dragIdxRef = useRef(null);
   const kbRef = useRef({});
   const showToast = useCallback(msg => {
     setToast(msg);
@@ -1483,11 +1725,12 @@ function App() {
       saveToStorage({
         pages: savPages,
         curIdx,
-        ratioId: ratio.id
+        ratioId: ratio.id,
+        exportFmt
       });
     }, 1000);
     return () => clearTimeout(saveTimerRef.current);
-  }, [P, curIdx, ratio]);
+  }, [P, curIdx, ratio, exportFmt]);
 
   /* undo — ref-based */
   const histRef = useRef({
@@ -1666,6 +1909,88 @@ function App() {
     setMulti(c);
   };
 
+  /* ── one-click full carousel kits (two-click confirm — no native dialog) ── */
+  const applyKit = kit => {
+    if (kitArm !== kit.id) {
+      setKitArm(kit.id);
+      if (kitArmTimerRef.current) clearTimeout(kitArmTimerRef.current);
+      kitArmTimerRef.current = setTimeout(() => setKitArm(null), 3000);
+      return;
+    }
+    if (kitArmTimerRef.current) clearTimeout(kitArmTimerRef.current);
+    setKitArm(null);
+    const np = kit.pages.map(pg => makePage(pg.pageType || "cover", pg));
+    setPages(np);
+    setCurIdx(0);
+    setCurrentPage(np[0]);
+    pushHistoryNow(np);
+    showToast(`已載入「${kit.label}」整組模板（${np.length} 頁，Ctrl+Z 可復原）`);
+  };
+
+  /* ── apply current page's style to every page ── */
+  const styleAllPages = () => {
+    const flushed = [...pages];
+    flushed[curIdx] = {
+      ...P
+    };
+    const s = {
+      accent: P.accent,
+      bgColor: P.bgColor,
+      textColor: P.textColor,
+      fontHead: P.fontHead,
+      fontBody: P.fontBody,
+      lineHScale: P.lineHScale || 1
+    };
+    const styled = flushed.map(pg => ({
+      ...pg,
+      ...s
+    }));
+    setPages(styled);
+    setCurrentPage(styled[curIdx]);
+    pushHistoryNow(styled);
+    showToast("已將本頁樣式套用到全部 " + styled.length + " 頁");
+  };
+
+  /* ── drag-and-drop page reorder ── */
+  const reorderPages = (from, to) => {
+    if (from === to || from == null || to == null) return;
+    const flushed = [...pages];
+    flushed[curIdx] = {
+      ...P
+    };
+    const [m] = flushed.splice(from, 1);
+    flushed.splice(to, 0, m);
+    let nc = curIdx;
+    if (curIdx === from) nc = to;else if (from < curIdx && to >= curIdx) nc = curIdx - 1;else if (from > curIdx && to <= curIdx) nc = curIdx + 1;
+    setPages(flushed);
+    setCurIdx(nc);
+    setCurrentPage(flushed[nc]);
+    pushHistoryNow(flushed);
+  };
+
+  /* ── background image ── */
+  const handleBgUpload = e => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => set("bgImage", ev.target.result);
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  };
+
+  /* ── first-run tutorial ── */
+  useEffect(() => {
+    try {
+      if (!localStorage.getItem("typo-tutorial-seen")) setShowHelp(true);
+    } catch (e) {}
+  }, []);
+  const closeHelp = () => {
+    setShowHelp(false);
+    try {
+      localStorage.setItem("typo-tutorial-seen", "1");
+    } catch (e) {}
+  };
+
   /* ── auto-fix typography ── */
   const autoFixCurrent = () => {
     setMulti(autoFixPage(P));
@@ -1714,7 +2039,9 @@ function App() {
       ratioId: ratio.id,
       pages: flushed.map(pg => ({
         ...pg,
-        _imgEl: undefined
+        _imgEl: undefined,
+        _shadow: undefined,
+        _shadowScale: undefined
       }))
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -1790,10 +2117,14 @@ function App() {
     const h = size * (r.h / r.w);
     const sc = size / 340;
     const pt = p.pageType || "cover";
+    // Background image rides as CSS layers on the root (no extra divs → no z-index fights);
+    // text-shadow is inherited, so setting it once here covers every text node on the page.
+    const ov = p.bgOverlay != null ? p.bgOverlay : 0.35;
     const bgStyle = {
       width: w,
       height: h,
-      background: p.bgColor,
+      background: p.bgImage ? `linear-gradient(rgba(0,0,0,${ov}),rgba(0,0,0,${ov})),url("${p.bgImage}") center/cover no-repeat #111` : p.bgColor,
+      textShadow: p.bgImage ? `0 ${2 * sc}px ${12 * sc}px rgba(0,0,0,0.55)` : undefined,
       position: "relative",
       overflow: "hidden",
       display: "flex",
@@ -2025,6 +2356,7 @@ function App() {
       }, pageIndex + 1, "/", totalPages);
     };
     if (pt === "cover") {
+      const LH = p.lineHScale || 1;
       const isNumLeft = p.layout === "number-left" && p.bigNumber;
       const pad = w * 0.1;
       // estimate big number width (character-aspect ≈ 0.55 for digits)
@@ -2100,7 +2432,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 700,
           color: p.textColor,
-          lineHeight: 1.35,
+          lineHeight: 1.35 * LH,
           letterSpacing: 2 * sc,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2138,6 +2470,7 @@ function App() {
       }, p.bottomTag), /*#__PURE__*/React.createElement(PageNum, null));
     }
     if (pt === "img-top" || pt === "text-top") {
+      const LH = p.lineHScale || 1;
       const imgH = h * 0.48;
       const padH = w * 0.08,
         padV = w * 0.06;
@@ -2147,9 +2480,9 @@ function App() {
       const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(10, 12 * sc));
       const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-      const headBlockH = headLines.length * effHead * 1.4 + 8 * sc;
+      const headBlockH = headLines.length * effHead * 1.4 * LH + 8 * sc;
       const baseBody = (p.bodySize || 15) * sc;
-      const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headBlockH), baseBody, 1.7, p.fontBody, "400", Math.max(9, 10 * sc));
+      const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headBlockH), baseBody, 1.7 * LH, p.fontBody, "400", Math.max(9, 10 * sc));
       const textBlock = /*#__PURE__*/React.createElement("div", {
         style: {
           flex: 1,
@@ -2166,7 +2499,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 700,
           color: p.textColor,
-          lineHeight: 1.4,
+          lineHeight: 1.4 * LH,
           marginBottom: 8 * sc,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2179,7 +2512,7 @@ function App() {
           fontSize: bodyRes.fontSize,
           color: p.textColor,
           opacity: 0.7,
-          lineHeight: 1.7,
+          lineHeight: 1.7 * LH,
           wordBreak: "break-word",
           overflowWrap: "break-word"
         }
@@ -2198,6 +2531,7 @@ function App() {
       }, pt === "img-top" ? /*#__PURE__*/React.createElement(React.Fragment, null, imgBlock, textBlock) : /*#__PURE__*/React.createElement(React.Fragment, null, textBlock, imgBlock), /*#__PURE__*/React.createElement(PageNum, null));
     }
     if (pt === "side-lr" || pt === "side-rl") {
+      const LH = p.lineHScale || 1;
       const imgW = w * 0.45;
       const pad = w * 0.06;
       const txtW = Math.max(30, w - imgW - pad * 2);
@@ -2206,9 +2540,9 @@ function App() {
       const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(9, 11 * sc));
       const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-      const headBlockH = headLines.length * effHead * 1.4 + 8 * sc;
+      const headBlockH = headLines.length * effHead * 1.4 * LH + 8 * sc;
       const baseBody = (p.bodySize || 14) * sc;
-      const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headBlockH), baseBody, 1.7, p.fontBody, "400", Math.max(8, 10 * sc));
+      const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headBlockH), baseBody, 1.7 * LH, p.fontBody, "400", Math.max(8, 10 * sc));
       const textBlock = /*#__PURE__*/React.createElement("div", {
         style: {
           flex: 1,
@@ -2225,7 +2559,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 700,
           color: p.textColor,
-          lineHeight: 1.4,
+          lineHeight: 1.4 * LH,
           marginBottom: 8 * sc,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2238,7 +2572,7 @@ function App() {
           fontSize: bodyRes.fontSize,
           color: p.textColor,
           opacity: 0.7,
-          lineHeight: 1.7,
+          lineHeight: 1.7 * LH,
           wordBreak: "break-word",
           overflowWrap: "break-word"
         }
@@ -2260,6 +2594,7 @@ function App() {
       }, pt === "side-lr" ? /*#__PURE__*/React.createElement(React.Fragment, null, imgBlock, textBlock) : /*#__PURE__*/React.createElement(React.Fragment, null, textBlock, imgBlock), /*#__PURE__*/React.createElement(PageNum, null));
     }
     if (pt === "list") {
+      const LH = p.lineHScale || 1;
       const items = p.listItems || [];
       const isDarkBg = !p.bgColor?.includes?.("f5f0e8") && !p.bgColor?.includes?.("fafaf5");
       const pad = w * 0.08;
@@ -2271,7 +2606,7 @@ function App() {
       const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(10, 12 * sc));
       const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-      const headH = headLines.length * effHead * 1.4 + 16 * sc;
+      const headH = headLines.length * effHead * 1.4 * LH + 16 * sc;
       const itemSpace = Math.max(20, h - pad * 2 - headH);
       // shrink items until total fits
       const baseItem = (p.bodySize || 15) * sc;
@@ -2283,7 +2618,7 @@ function App() {
         wrappedItems = items.map(item => wrapLineWithHL(item, itemTxtW, itFont));
         let totalH = 0;
         for (const lines of wrappedItems) {
-          totalH += Math.max(bulletSize, lines.length * itemSize * 1.6) + 10 * sc;
+          totalH += Math.max(bulletSize, lines.length * itemSize * 1.6 * LH) + 10 * sc;
         }
         if (totalH <= itemSpace || itemSize <= minItem) break;
         itemSize = Math.max(minItem, Math.floor(itemSize * 0.93));
@@ -2306,7 +2641,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 700,
           color: p.textColor,
-          lineHeight: 1.4,
+          lineHeight: 1.4 * LH,
           marginBottom: 16 * sc,
           textAlign: "center",
           wordBreak: "break-word",
@@ -2351,7 +2686,7 @@ function App() {
           fontFamily: `"${p.fontBody}",sans-serif`,
           fontSize: itemSize,
           color: p.textColor,
-          lineHeight: 1.6,
+          lineHeight: 1.6 * LH,
           opacity: 0.85,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2361,6 +2696,7 @@ function App() {
       }, renderHL(l, p.accent, p.textColor)))))))), /*#__PURE__*/React.createElement(PageNum, null));
     }
     if (pt === "quote") {
+      const LH = p.lineHScale || 1;
       const pad = w * 0.12;
       const availW = Math.max(40, w - pad * 2);
       const baseHead = (p.headSize || 44) * sc;
@@ -2398,7 +2734,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 700,
           color: p.textColor,
-          lineHeight: 1.5,
+          lineHeight: 1.5 * LH,
           letterSpacing: 1 * sc,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2442,6 +2778,7 @@ function App() {
       }, p.bottomTag), /*#__PURE__*/React.createElement(PageNum, null));
     }
     if (pt === "cta") {
+      const LH = p.lineHScale || 1;
       const pad = w * 0.1;
       const availW = Math.max(40, w - pad * 2);
       const baseHead = (p.headSize || 34) * sc;
@@ -2481,7 +2818,7 @@ function App() {
           fontSize: effHead,
           fontWeight: 800,
           color: p.textColor,
-          lineHeight: 1.3,
+          lineHeight: 1.3 * LH,
           letterSpacing: 1 * sc,
           wordBreak: "break-word",
           overflowWrap: "break-word"
@@ -2558,6 +2895,12 @@ function App() {
     }
     const prev = ctx.textAlign;
     ctx.textAlign = "left";
+    if (p._shadow) {
+      const ss = p._shadowScale || 1;
+      ctx.shadowColor = "rgba(0,0,0,0.55)";
+      ctx.shadowOffsetY = 2 * ss;
+      ctx.shadowBlur = 12 * ss;
+    }
     let cx = align === "center" ? x - totalW / 2 : align === "right" ? x - totalW : x;
     for (const s of segs) {
       ctx.font = `${s.hl ? 800 : wt} ${sz}px "${ff}",sans-serif`;
@@ -2565,27 +2908,34 @@ function App() {
       ctx.fillText(s.text, cx, y);
       cx += ctx.measureText(s.text).width;
     }
+    if (p._shadow) {
+      ctx.shadowColor = "transparent";
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+    }
     ctx.textAlign = prev;
   };
-  const drawImgArea = (ctx, p, x, y, w, h) => {
-    if (p._imgEl) {
-      const img = p._imgEl;
-      const ar = img.width / img.height;
-      const tr = w / h;
-      let sw, sh, sx, sy;
-      if (ar > tr) {
-        sh = img.height;
-        sw = sh * tr;
-        sx = (img.width - sw) / 2;
-        sy = 0;
-      } else {
-        sw = img.width;
-        sh = sw / tr;
-        sy = (img.height - sh) / 2;
-        sx = 0;
-      }
-      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+
+  // cover-crop an image into the target rect (same math the preview's CSS `cover` uses)
+  const drawImageCover = (ctx, img, x, y, w, h) => {
+    const ar = img.width / img.height;
+    const tr = w / h;
+    let sw, sh, sx, sy;
+    if (ar > tr) {
+      sh = img.height;
+      sw = sh * tr;
+      sx = (img.width - sw) / 2;
+      sy = 0;
     } else {
+      sw = img.width;
+      sh = sw / tr;
+      sy = (img.height - sh) / 2;
+      sx = 0;
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  };
+  const drawImgArea = (ctx, p, x, y, w, h) => {
+    if (p._imgEl) drawImageCover(ctx, p._imgEl, x, y, w, h);else {
       ctx.fillStyle = p.imgColor || "#222230";
       ctx.fillRect(x, y, w, h);
     }
@@ -2611,33 +2961,40 @@ function App() {
       ctx.fillStyle = g;
     } else ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, H);
-    return new Promise(resolve => {
-      const draw = () => {
-        if (pt === "cover") drawCover(ctx, p, W, H);else if (pt === "img-top" || pt === "text-top") drawImgText(ctx, p, W, H, pt);else if (pt === "side-lr" || pt === "side-rl") drawSide(ctx, p, W, H, pt);else if (pt === "list") drawList(ctx, p, W, H);else if (pt === "quote") drawQuote(ctx, p, W, H);else if (pt === "cta") drawCta(ctx, p, W, H);
-        if (p.showPageNum) {
-          const S = W / 340;
-          ctx.font = `600 ${10 * S}px "Space Mono",monospace`;
-          ctx.fillStyle = p.textColor;
-          ctx.globalAlpha = 0.3;
-          ctx.textAlign = "right";
-          ctx.textBaseline = "bottom";
-          ctx.fillText(`${pgIdx + 1}/${totalPages}`, W - W * 0.06, H - H * 0.04);
-          ctx.globalAlpha = 1;
-        }
-        resolve(c);
-      };
-      if (p.imgData) {
-        const img = new Image();
-        img.onload = () => {
-          p._imgEl = img;
-          draw();
-        };
-        img.src = p.imgData;
-      } else draw();
+    const loadImg = src => new Promise(res => {
+      if (!src) return res(null);
+      const img = new Image();
+      img.onload = () => res(img);
+      img.onerror = () => res(null);
+      img.src = src;
+    });
+    return Promise.all([loadImg(p.imgData), loadImg(p.bgImage)]).then(([contentImg, bgImg]) => {
+      p._imgEl = contentImg || undefined;
+      if (bgImg) {
+        drawImageCover(ctx, bgImg, 0, 0, W, H);
+        ctx.fillStyle = `rgba(0,0,0,${p.bgOverlay != null ? p.bgOverlay : 0.35})`;
+        ctx.fillRect(0, 0, W, H);
+      }
+      // mirror the preview's inherited text-shadow when a bg photo is present
+      p._shadow = !!bgImg;
+      p._shadowScale = W / 340;
+      if (pt === "cover") drawCover(ctx, p, W, H);else if (pt === "img-top" || pt === "text-top") drawImgText(ctx, p, W, H, pt);else if (pt === "side-lr" || pt === "side-rl") drawSide(ctx, p, W, H, pt);else if (pt === "list") drawList(ctx, p, W, H);else if (pt === "quote") drawQuote(ctx, p, W, H);else if (pt === "cta") drawCta(ctx, p, W, H);
+      if (p.showPageNum) {
+        const S = W / 340;
+        ctx.font = `600 ${10 * S}px "Space Mono",monospace`;
+        ctx.fillStyle = p.textColor;
+        ctx.globalAlpha = 0.3;
+        ctx.textAlign = "right";
+        ctx.textBaseline = "bottom";
+        ctx.fillText(`${pgIdx + 1}/${totalPages}`, W - W * 0.06, H - H * 0.04);
+        ctx.globalAlpha = 1;
+      }
+      return c;
     });
   };
   const drawCover = (ctx, p, W, H) => {
     const S = W / 340; // preview base is 340
+    const LH = p.lineHScale || 1;
     ctx.globalAlpha = 0.6;
     if (p.decoStyle === "line") {
       ctx.fillStyle = p.accent;
@@ -2726,7 +3083,7 @@ function App() {
       const baseSub = (p.subSize || 14) * S;
       const effSub = fitFontSize(p.subtitle, availW, baseSub, p.fontBody, "400", Math.max(8, 10 * S));
       // vertically center the block around H*0.48
-      const blockH = (p.topLabel ? effTop + 12 * S : 0) + headLines.length * effHead * 1.35 + (p.subtitle ? effSub + 8 * S : 0);
+      const blockH = (p.topLabel ? effTop + 12 * S : 0) + headLines.length * effHead * 1.35 * LH + (p.subtitle ? effSub + 8 * S : 0);
       let curY = H * 0.48 - blockH / 2;
       ctx.textBaseline = "top";
       if (p.topLabel) {
@@ -2737,7 +3094,7 @@ function App() {
       }
       headLines.forEach(line => {
         drawHLLine(ctx, p, line, bx, curY, "left", effHead, p.fontHead, 700);
-        curY += effHead * 1.35;
+        curY += effHead * 1.35 * LH;
       });
       if (p.subtitle) {
         ctx.font = `400 ${effSub}px "${p.fontBody}",sans-serif`;
@@ -2758,7 +3115,7 @@ function App() {
       const effTop = fitFontSize(p.topLabel, availW, baseTop, p.fontBody, "700", Math.max(8, 9 * S));
       const baseSub = (p.subSize || 14) * S;
       const effSub = fitFontSize(p.subtitle, availW, baseSub, p.fontBody, "400", Math.max(8, 10 * S));
-      const blockH = (p.topLabel ? effTop + 20 * S : 0) + headLines.length * effHead * 1.35 + (p.subtitle ? effSub + 10 * S : 0);
+      const blockH = (p.topLabel ? effTop + 20 * S : 0) + headLines.length * effHead * 1.35 * LH + (p.subtitle ? effSub + 10 * S : 0);
       let curY = H * 0.5 - blockH / 2;
       if (p.topLabel) {
         ctx.font = `700 ${effTop}px "${p.fontBody}",sans-serif`;
@@ -2768,7 +3125,7 @@ function App() {
       }
       headLines.forEach(line => {
         drawHLLine(ctx, p, line, W / 2, curY, "center", effHead, p.fontHead, 700);
-        curY += effHead * 1.35;
+        curY += effHead * 1.35 * LH;
       });
       if (p.subtitle) {
         ctx.font = `400 ${effSub}px "${p.fontBody}",sans-serif`;
@@ -2790,6 +3147,7 @@ function App() {
   };
   const drawImgText = (ctx, p, W, H, pt) => {
     const S = W / 340;
+    const LH = p.lineHScale || 1;
     const imgH = H * 0.48;
     const imgY = pt === "img-top" ? 0 : H - imgH;
     drawImgArea(ctx, p, 0, imgY, W, imgH);
@@ -2803,30 +3161,31 @@ function App() {
     const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(12, 12 * S));
     const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-    const headH = headLines.length * effHead * 1.4 + 8 * S;
+    const headH = headLines.length * effHead * 1.4 * LH + 8 * S;
     const baseBody = (p.bodySize || 15) * S;
-    const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headH), baseBody, 1.7, p.fontBody, "400", Math.max(10, 10 * S));
+    const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headH), baseBody, 1.7 * LH, p.fontBody, "400", Math.max(10, 10 * S));
     // vertical center
-    const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 : 0);
+    const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 * LH : 0);
     let curY = textTop + Math.max(0, (txtH - totalH) / 2);
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     headLines.forEach(line => {
       drawHLLine(ctx, p, line, padH, curY, "left", effHead, p.fontHead, 700);
-      curY += effHead * 1.4;
+      curY += effHead * 1.4 * LH;
     });
     if (p.bodyText) {
       curY += 8 * S;
       ctx.globalAlpha = 0.7;
       bodyRes.lines.forEach(l => {
         drawHLLine(ctx, p, l, padH, curY, "left", bodyRes.fontSize, p.fontBody, 400);
-        curY += bodyRes.fontSize * 1.7;
+        curY += bodyRes.fontSize * 1.7 * LH;
       });
       ctx.globalAlpha = 1;
     }
   };
   const drawSide = (ctx, p, W, H, pt) => {
     const S = W / 340;
+    const LH = p.lineHScale || 1;
     const imgW = W * 0.45;
     const imgX = pt === "side-lr" ? 0 : W - imgW;
     const textX = pt === "side-lr" ? imgW : 0;
@@ -2838,29 +3197,30 @@ function App() {
     const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(11, 11 * S));
     const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-    const headH = headLines.length * effHead * 1.4 + 8 * S;
+    const headH = headLines.length * effHead * 1.4 * LH + 8 * S;
     const baseBody = (p.bodySize || 14) * S;
-    const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headH), baseBody, 1.7, p.fontBody, "400", Math.max(10, 10 * S));
-    const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 : 0);
+    const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headH), baseBody, 1.7 * LH, p.fontBody, "400", Math.max(10, 10 * S));
+    const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 * LH : 0);
     let curY = pad + Math.max(0, (txtH - totalH) / 2);
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     headLines.forEach(line => {
       drawHLLine(ctx, p, line, textX + pad, curY, "left", effHead, p.fontHead, 700);
-      curY += effHead * 1.4;
+      curY += effHead * 1.4 * LH;
     });
     if (p.bodyText) {
       curY += 8 * S;
       ctx.globalAlpha = 0.7;
       bodyRes.lines.forEach(l => {
         drawHLLine(ctx, p, l, textX + pad, curY, "left", bodyRes.fontSize, p.fontBody, 400);
-        curY += bodyRes.fontSize * 1.7;
+        curY += bodyRes.fontSize * 1.7 * LH;
       });
       ctx.globalAlpha = 1;
     }
   };
   const drawList = (ctx, p, W, H) => {
     const S = W / 340;
+    const LH = p.lineHScale || 1;
     const pad = W * 0.08;
     const txtW = W - pad * 2;
     const bulletSize = 24 * S;
@@ -2872,7 +3232,7 @@ function App() {
     const effHead = fitFontSize(p.headline, txtW, baseHead, p.fontHead, "700", Math.max(12, 12 * S));
     const headFont = `700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines = wrapAllLines(p.headline, txtW, headFont, true);
-    const headH = headLines.length * effHead * 1.4 + 16 * S;
+    const headH = headLines.length * effHead * 1.4 * LH + 16 * S;
     const itemSpace = H - pad * 2 - headH;
     // shrink items uniformly until they fit
     const baseItem = (p.bodySize || 15) * S;
@@ -2884,7 +3244,7 @@ function App() {
       wrappedItems = items.map(item => wrapLineWithHL(item, itemTxtW, itFont));
       let totalH = 0;
       for (const lines of wrappedItems) {
-        totalH += Math.max(bulletSize, lines.length * itemSize * 1.6) + 10 * S;
+        totalH += Math.max(bulletSize, lines.length * itemSize * 1.6 * LH) + 10 * S;
       }
       if (totalH <= itemSpace || itemSize <= minItem) break;
       itemSize = Math.max(minItem, Math.floor(itemSize * 0.93));
@@ -2892,7 +3252,7 @@ function App() {
     // Vertical center
     let totalBlockH = headH;
     for (const lines of wrappedItems) {
-      totalBlockH += Math.max(bulletSize, lines.length * itemSize * 1.6) + 10 * S;
+      totalBlockH += Math.max(bulletSize, lines.length * itemSize * 1.6 * LH) + 10 * S;
     }
     totalBlockH -= 10 * S; // last gap
     let curY = Math.max(pad, (H - totalBlockH) / 2);
@@ -2900,7 +3260,7 @@ function App() {
     ctx.textBaseline = "top";
     headLines.forEach(line => {
       drawHLLine(ctx, p, line, W / 2, curY, "center", effHead, p.fontHead, 700);
-      curY += effHead * 1.4;
+      curY += effHead * 1.4 * LH;
     });
     curY += 16 * S;
     ctx.textAlign = "left";
@@ -2938,14 +3298,15 @@ function App() {
       let ly = by + 2 * S;
       lines.forEach(l => {
         drawHLLine(ctx, p, l, bx + bulletSize + bulletGap + 4 * S, ly, "left", itemSize, p.fontBody, 400);
-        ly += itemSize * 1.6;
+        ly += itemSize * 1.6 * LH;
       });
       ctx.globalAlpha = 1;
-      curY += Math.max(bulletSize, lines.length * itemSize * 1.6) + 10 * S;
+      curY += Math.max(bulletSize, lines.length * itemSize * 1.6 * LH) + 10 * S;
     });
   };
   const drawQuote = (ctx, p, W, H) => {
     const S = W / 340;
+    const LH = p.lineHScale || 1;
     const pad = W * 0.12;
     const availW = Math.max(40, W - pad * 2);
     const baseHead = (p.headSize || 44) * S;
@@ -2956,7 +3317,7 @@ function App() {
     const effSub = fitFontSize(p.subtitle, availW, baseSub, p.fontBody, "600", Math.max(8, 10 * S));
     const quoteH = 62 * S * 0.7;
     const ruleH = Math.max(2, W * 0.005);
-    const headH = headLines.length * effHead * 1.5;
+    const headH = headLines.length * effHead * 1.5 * LH;
     const subBlock = p.subtitle ? H * 0.035 + ruleH + H * 0.018 + effSub : 0;
     const totalH = quoteH + 14 * S + headH + subBlock;
     let curY = Math.max(pad, (H - totalH) / 2);
@@ -2970,7 +3331,7 @@ function App() {
     curY += quoteH + 14 * S;
     headLines.forEach(l => {
       drawHLLine(ctx, p, l, W / 2, curY, "center", effHead, p.fontHead, 700);
-      curY += effHead * 1.5;
+      curY += effHead * 1.5 * LH;
     });
     if (p.subtitle) {
       curY += H * 0.035;
@@ -2997,6 +3358,7 @@ function App() {
   };
   const drawCta = (ctx, p, W, H) => {
     const S = W / 340;
+    const LH = p.lineHScale || 1;
     const pad = W * 0.1;
     const availW = Math.max(40, W - pad * 2);
     const baseHead = (p.headSize || 34) * S;
@@ -3030,7 +3392,7 @@ function App() {
       }
     }
     if (row.length) rows.push(row);
-    const headH = headLines.length * effHead * 1.3;
+    const headH = headLines.length * effHead * 1.3 * LH;
     const chipsH = rows.length ? rows.length * chipH + (rows.length - 1) * chipGap : 0;
     const totalH = (p.topLabel ? effTop + gap : 0) + headH + (rows.length ? gap + chipsH : 0) + (p.bottomTag ? gap + 15 * S : 0);
     let curY = Math.max(pad, (H - totalH) / 2);
@@ -3044,7 +3406,7 @@ function App() {
     }
     headLines.forEach(l => {
       drawHLLine(ctx, p, l, W / 2, curY, "center", effHead, p.fontHead, 800);
-      curY += effHead * 1.3;
+      curY += effHead * 1.3 * LH;
     });
     if (rows.length) {
       curY += gap;
@@ -3104,28 +3466,45 @@ function App() {
     }
   }, [P, ratio, curIdx, totalPages, exportFmt]);
   const doExportAll = useCallback(async () => {
-    // flush current P into pages for export
+    // flush current P into pages, render every page, bundle as one ZIP (with the project file)
     const allPages = [...pages];
     allPages[curIdx] = {
       ...P
     };
     const mime = exportFmt === "jpg" ? "image/jpeg" : "image/png";
     const ext = exportFmt === "jpg" ? "jpg" : "png";
+    const files = [];
     for (let i = 0; i < allPages.length; i++) {
       const c = await renderToCanvas(allPages[i], ratio, i);
-      await new Promise(res => {
-        c.toBlob(blob => {
-          const u = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = u;
-          a.download = `ig-p${i + 1}-${ratio.id}-${Date.now()}.${ext}`;
-          a.click();
-          URL.revokeObjectURL(u);
-          setTimeout(res, 300);
-        }, mime, exportFmt === "jpg" ? 0.95 : undefined);
+      const blob = await new Promise(res => c.toBlob(res, mime, exportFmt === "jpg" ? 0.95 : undefined));
+      files.push({
+        name: `typo-p${i + 1}.${ext}`,
+        data: new Uint8Array(await blob.arrayBuffer())
       });
     }
-    showToast("已匯出全部 " + allPages.length + " 頁");
+    const proj = {
+      app: "typo-studio",
+      version: 2,
+      ratioId: ratio.id,
+      pages: allPages.map(pg => ({
+        ...pg,
+        _imgEl: undefined,
+        _shadow: undefined,
+        _shadowScale: undefined
+      }))
+    };
+    files.push({
+      name: "typo-project.json",
+      data: new TextEncoder().encode(JSON.stringify(proj, null, 2))
+    });
+    const zip = buildZip(files);
+    const u = URL.createObjectURL(zip);
+    const a = document.createElement("a");
+    a.href = u;
+    a.download = `typo-carousel-${ratio.id.replace(":", "x")}-${Date.now()}.zip`;
+    a.click();
+    URL.revokeObjectURL(u);
+    showToast(`已打包 ${allPages.length} 頁 + 專案檔（ZIP）`);
   }, [pages, P, ratio, curIdx, totalPages, exportFmt, showToast]);
 
   /* UI pieces are defined OUTSIDE App — see above */
@@ -3185,6 +3564,14 @@ function App() {
       display: "none"
     },
     onChange: importProject
+  }), /*#__PURE__*/React.createElement("input", {
+    ref: bgFileRef,
+    type: "file",
+    accept: "image/*",
+    style: {
+      display: "none"
+    },
+    onChange: handleBgUpload
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       padding: "8px 20px",
@@ -3263,13 +3650,32 @@ function App() {
       fontWeight: 600,
       letterSpacing: 1
     }
-  }, r.label)))), /*#__PURE__*/React.createElement("div", {
+  }, r.label))), /*#__PURE__*/React.createElement("button", {
+    className: `btn${showGuide ? " active" : ""}`,
+    onClick: () => setShowGuide(!showGuide),
+    title: "\u986F\u793A IG \u4ECB\u9762\u5B89\u5168\u5340\u53C3\u8003\u7DDA\uFF08\u50C5\u9810\u89BD\uFF0C\u4E0D\u6703\u532F\u51FA\uFF09",
+    style: {
+      padding: "5px 10px",
+      fontSize: 9,
+      fontWeight: 600,
+      letterSpacing: 1
+    }
+  }, "\u5B89\u5168\u5340")), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 6,
       alignItems: "center"
     }
   }, /*#__PURE__*/React.createElement("button", {
+    className: "btn",
+    onClick: () => setShowHelp(true),
+    style: {
+      padding: "6px 11px",
+      fontSize: 12,
+      fontWeight: 700
+    },
+    title: "\u4F7F\u7528\u6559\u5B78"
+  }, "?"), /*#__PURE__*/React.createElement("button", {
     className: "btn",
     onClick: exportProject,
     style: {
@@ -3394,6 +3800,18 @@ function App() {
     key: pg.id,
     className: `page-thumb${i === curIdx ? " active" : ""}`,
     onClick: () => switchPage(i),
+    draggable: true,
+    onDragStart: () => {
+      dragIdxRef.current = i;
+    },
+    onDragOver: e => e.preventDefault(),
+    onDrop: e => {
+      e.preventDefault();
+      const from = dragIdxRef.current;
+      dragIdxRef.current = null;
+      if (from != null && from !== i) reorderPages(from, i);
+    },
+    title: `第 ${i + 1} 頁（拖曳可調整順序）`,
     style: {
       width: 52,
       height: 52 * (ratio.h / ratio.w),
@@ -3534,7 +3952,8 @@ function App() {
     style: {
       borderRadius: 4,
       overflow: "hidden",
-      boxShadow: "0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)"
+      boxShadow: "0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)",
+      position: "relative"
     }
   }, /*#__PURE__*/React.createElement(Preview, {
     size: actualPreviewW,
@@ -3542,7 +3961,50 @@ function App() {
     interactive: true,
     showPageIndicator: true,
     pageIndex: curIdx
-  })), /*#__PURE__*/React.createElement("div", {
+  }), showGuide && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      inset: 0,
+      pointerEvents: "none",
+      zIndex: 5
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      inset: "5%",
+      border: "1px dashed rgba(255,255,255,0.3)"
+    }
+  }), ratio.id === "9:16" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      height: "13%",
+      background: "rgba(255,80,80,0.12)",
+      borderBottom: "1px dashed rgba(255,80,80,0.4)"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: "17%",
+      background: "rgba(255,80,80,0.12)",
+      borderTop: "1px dashed rgba(255,80,80,0.4)"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      bottom: "18%",
+      right: 6,
+      fontSize: 8,
+      color: "rgba(255,120,120,0.7)",
+      fontFamily: "'Space Mono',monospace",
+      letterSpacing: 1
+    }
+  }, "UI \u906E\u64CB\u5340")))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       bottom: 12,
@@ -3582,7 +4044,48 @@ function App() {
       animation: "fi 0.15s ease"
     },
     key: tab + curIdx
-  }, tab === "presets" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "PAGE TYPE"), /*#__PURE__*/React.createElement("div", {
+  }, tab === "presets" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u4E00\u9375\u6574\u7D44\u8F2A\u64AD"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 6,
+      marginBottom: 20
+    }
+  }, CAROUSEL_KITS.map(k => /*#__PURE__*/React.createElement("button", {
+    key: k.id,
+    className: `btn${kitArm === k.id ? " active" : ""}`,
+    onClick: () => applyKit(k),
+    style: {
+      padding: "12px 14px",
+      justifyContent: "space-between",
+      textAlign: "left"
+    }
+  }, kitArm === k.id ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "#ffb86b",
+      fontWeight: 700,
+      fontSize: 12
+    }
+  }, "\u518D\u6309\u4E00\u6B21\u78BA\u8A8D\u53D6\u4EE3\u76EE\u524D\u9801\u9762\uFF08\u53EF\u5FA9\u539F\uFF09") : /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontWeight: 700,
+      color: "#c0c0d0",
+      fontSize: 13
+    }
+  }, k.label), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: "#6060a0",
+      marginLeft: 8
+    }
+  }, k.desc)), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      color: "#5a5a78",
+      fontFamily: "'Space Mono',monospace",
+      flexShrink: 0
+    }
+  }, k.pages.length, "P")))), /*#__PURE__*/React.createElement(Sec, null, "PAGE TYPE"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
       gridTemplateColumns: "repeat(3,1fr)",
@@ -4153,6 +4656,14 @@ function App() {
     step: 1,
     onChange: e => set("bodySize", +e.target.value),
     sfx: "px"
+  }), /*#__PURE__*/React.createElement(Sld, {
+    label: "\u884C\u8DDD",
+    value: P.lineHScale || 1,
+    min: 0.8,
+    max: 1.6,
+    step: 0.1,
+    onChange: e => set("lineHScale", +e.target.value),
+    sfx: "x"
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 8
@@ -4268,7 +4779,22 @@ function App() {
       fontSize: 10,
       fontWeight: 600
     }
-  }, d.l))))), tab === "bg" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u80CC\u666F\u8272"), /*#__PURE__*/React.createElement("div", {
+  }, d.l)))), pages.length > 1 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn",
+    onClick: styleAllPages,
+    style: {
+      width: "100%",
+      padding: "11px",
+      fontSize: 11,
+      fontWeight: 600,
+      letterSpacing: 1
+    },
+    title: "\u628A\u672C\u9801\u7684\u914D\u8272\u3001\u5B57\u578B\u8207\u884C\u8DDD\u5957\u7528\u5230\u6574\u4EFD\u8F2A\u64AD"
+  }, ICO.wand, " \u6A23\u5F0F\u5957\u7528\u5230\u5168\u90E8\u9801\u9762"))), tab === "bg" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u80CC\u666F\u8272"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
       gridTemplateColumns: "repeat(4,1fr)",
@@ -4355,7 +4881,195 @@ function App() {
       fontSize: 11,
       fontFamily: "'Space Mono',monospace"
     }
-  }))))), toast && /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 20
+    }
+  }, /*#__PURE__*/React.createElement(Sec, null, "\u80CC\u666F\u5716\u7247")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 8,
+      marginBottom: 12
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "btn primary",
+    onClick: () => bgFileRef.current?.click(),
+    style: {
+      flex: 1,
+      padding: "12px",
+      fontSize: 11,
+      fontWeight: 600,
+      letterSpacing: 2
+    }
+  }, ICO.upload, " \u4E0A\u50B3\u80CC\u666F\u5716"), P.bgImage && /*#__PURE__*/React.createElement("button", {
+    className: "btn danger",
+    onClick: () => set("bgImage", null),
+    style: {
+      padding: "12px 16px",
+      fontSize: 11,
+      fontWeight: 600
+    }
+  }, "\u6E05\u9664")), P.bgImage && /*#__PURE__*/React.createElement(Sld, {
+    label: "\u6697\u5316\u906E\u7F69",
+    value: Math.round((P.bgOverlay != null ? P.bgOverlay : 0.35) * 100),
+    min: 0,
+    max: 80,
+    step: 5,
+    onChange: e => set("bgOverlay", +e.target.value / 100),
+    sfx: "%"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 10,
+      color: "#5a5a78",
+      lineHeight: 1.6
+    }
+  }, "\u4E0A\u50B3\u80CC\u666F\u5716\u5F8C\u6703\u81EA\u52D5\u84CB\u4E0A\u6697\u5316\u906E\u7F69\u4E26\u66FF\u6587\u5B57\u52A0\u4E0A\u9670\u5F71\uFF0C\u78BA\u4FDD\u6A19\u984C\u5728\u7167\u7247\u4E0A\u4ECD\u7136\u6E05\u6670\u53EF\u8B80\u3002"))))), showHelp && /*#__PURE__*/React.createElement("div", {
+    onClick: closeHelp,
+    style: {
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.72)",
+      zIndex: 300,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      animation: "fadeIn .2s ease"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: e => e.stopPropagation(),
+    style: {
+      width: 580,
+      maxWidth: "92vw",
+      maxHeight: "84vh",
+      overflowY: "auto",
+      background: "#12121c",
+      border: "1px solid #2a2a3a",
+      borderRadius: 12,
+      padding: "28px 32px",
+      color: "#c0c0d0",
+      fontFamily: "'Noto Sans TC',sans-serif",
+      boxShadow: "0 24px 80px rgba(0,0,0,0.7)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 16,
+      fontWeight: 700,
+      letterSpacing: 4,
+      fontFamily: "'Space Mono',monospace",
+      color: "#d0d0e0",
+      marginBottom: 4
+    }
+  }, "TYPO STUDIO"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 11,
+      color: "#6060a0",
+      marginBottom: 20
+    }
+  }, "\u5FEB\u901F\u4E0A\u624B\u6559\u5B78\uFF08\u96A8\u6642\u53EF\u6309\u53F3\u4E0A\u89D2 ? \u91CD\u65B0\u6253\u958B\uFF09"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      color: "#7070a0",
+      letterSpacing: 2,
+      marginBottom: 8
+    }
+  }, "\u4E94\u6B65\u9A5F\u505A\u51FA\u4E00\u7D44\u8F2A\u64AD"), /*#__PURE__*/React.createElement("ol", {
+    style: {
+      fontSize: 12.5,
+      lineHeight: 2,
+      paddingLeft: 20,
+      marginBottom: 18,
+      color: "#a8a8c0"
+    }
+  }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: "#c8c8dc"
+    }
+  }, "\u9078\u6A21\u677F"), " \u2014 \u300C\u6A21\u677F\u300D\u5206\u9801\u9EDE\u4E00\u500B\u5C01\u9762\u6A23\u5F0F\uFF0C\u6216\u7528\u300C\u4E00\u9375\u6574\u7D44\u8F2A\u64AD\u300D\u76F4\u63A5\u751F\u6210 5 \u9801"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: "#c8c8dc"
+    }
+  }, "\u6539\u6587\u5B57"), " \u2014 \u300C\u5167\u5BB9\u300D\u5206\u9801\u8F38\u5165\u6A19\u984C\uFF1B\u7528 ", /*#__PURE__*/React.createElement("code", {
+    style: {
+      color: "#FFD600"
+    }
+  }, "{hl}", "\u6587\u5B57", "{/hl}"), " \u8B93\u5C40\u90E8\u8B8A\u5F37\u8ABF\u8272"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: "#c8c8dc"
+    }
+  }, "\u8ABF\u6A23\u5F0F"), " \u2014 \u300C\u6A23\u5F0F / \u80CC\u666F\u300D\u5206\u9801\u63DB\u5B57\u578B\u3001\u914D\u8272\u3001\u884C\u8DDD\uFF0C\u6216\u4E0A\u50B3\u80CC\u666F\u7167\u7247"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: "#c8c8dc"
+    }
+  }, "\u4E00\u9375\u6392\u7248"), " \u2014 \u6309\u9802\u6B04\u300C\u2728 \u6392\u7248\u300D\u81EA\u52D5\u4FEE\u6B63\u5B57\u7D1A\u3001\u65B7\u884C\u8207\u5C0D\u6BD4\u5EA6"), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("b", {
+    style: {
+      color: "#c8c8dc"
+    }
+  }, "\u532F\u51FA"), " \u2014 EXPORT \u5B58\u55AE\u9801\uFF1BALL \u6253\u5305\u6574\u7D44 ZIP\uFF08\u542B\u5C08\u6848\u6A94\uFF0C\u53EF\u518D\u532F\u5165\u7E8C\u7DE8\uFF09")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      color: "#7070a0",
+      letterSpacing: 2,
+      marginBottom: 8
+    }
+  }, "\u9801\u9762\u7BA1\u7406"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      lineHeight: 1.9,
+      marginBottom: 18,
+      color: "#a8a8c0"
+    }
+  }, "\u7E2E\u5716\u5217\u300C+\u300D\u65B0\u589E 8 \u7A2E\u9801\u578B\uFF08\u5C01\u9762 / \u5716\u6587 / \u689D\u5217 / \u91D1\u53E5 / \u7D50\u5C3E CTA\uFF09\u30FB\u62D6\u66F3\u7E2E\u5716\u8ABF\u6574\u9806\u5E8F\u30FBDUP \u8907\u88FD\u672C\u9801\u30FB\u300C\u2728\u5168\u90E8\u300D\u6574\u4EFD\u81EA\u52D5\u6392\u7248\u30FB\u300C\u6A23\u5F0F\u5957\u7528\u5230\u5168\u90E8\u300D\u7D71\u4E00\u6574\u7D44\u8996\u89BA\u3002"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      color: "#7070a0",
+      letterSpacing: 2,
+      marginBottom: 8
+    }
+  }, "\u5FEB\u6377\u9375"), /*#__PURE__*/React.createElement("table", {
+    style: {
+      fontSize: 11.5,
+      lineHeight: 1.9,
+      color: "#a8a8c0",
+      marginBottom: 18,
+      borderSpacing: 0
+    }
+  }, /*#__PURE__*/React.createElement("tbody", null, [["Ctrl / ⌘ + Z", "復原"], ["Ctrl / ⌘ + Y", "重做"], ["Ctrl / ⌘ + D", "複製當前頁"], ["← / →", "切換上一頁 / 下一頁"]].map(([k, v]) => /*#__PURE__*/React.createElement("tr", {
+    key: k
+  }, /*#__PURE__*/React.createElement("td", {
+    style: {
+      paddingRight: 18,
+      fontFamily: "'Space Mono',monospace",
+      color: "#8080b0"
+    }
+  }, k), /*#__PURE__*/React.createElement("td", null, v))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      fontWeight: 700,
+      color: "#7070a0",
+      letterSpacing: 2,
+      marginBottom: 8
+    }
+  }, "\u81EA\u52D5\u6392\u7248\u5F15\u64CE"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: 12,
+      lineHeight: 1.9,
+      marginBottom: 22,
+      color: "#a8a8c0"
+    }
+  }, "\u4E2D\u6587\u907F\u982D\u5C3E\uFF08\u6A19\u9EDE\u4E0D\u843D\u884C\u9996\uFF09\u30FB\u591A\u884C\u6A19\u984C\u5E73\u8861\u63DB\u884C\u30FB\u82F1\u6587\u8207\u6578\u5B57\u4E0D\u5F9E\u4E2D\u9593\u62C6\u958B\u30FB\u5B57\u7D1A\u81EA\u52D5\u7E2E\u653E\u4E0D\u6EA2\u51FA\u30FB\u5C0D\u6BD4\u5EA6\u904E\u4F4E\u6642\u300C\u6A23\u5F0F\u300D\u5206\u9801\u6703\u51FA\u73FE\u4E00\u9375\u4FEE\u6B63\u3002\u5C08\u6848\u6703\u81EA\u52D5\u5132\u5B58\u5728\u672C\u6A5F\uFF1B\u63DB\u96FB\u8166\u8ACB\u7528 \uD83D\uDCBE \u532F\u51FA JSON \u5099\u4EFD\u3002"), /*#__PURE__*/React.createElement("button", {
+    className: "btn primary",
+    onClick: closeHelp,
+    style: {
+      width: "100%",
+      padding: "13px",
+      fontSize: 12,
+      fontWeight: 700,
+      letterSpacing: 3
+    }
+  }, "\u958B\u59CB\u4F7F\u7528"))), toast && /*#__PURE__*/React.createElement("div", {
     style: {
       position: "fixed",
       bottom: 24,

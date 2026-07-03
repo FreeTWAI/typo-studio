@@ -53,6 +53,31 @@ const CONTENT_PRESETS=[
   {id:"ct-cta-2",pageType:"cta",label:"行動呼籲",topLabel:"下一步",headline:"立即開始\n{hl}你的第一篇{/hl}",listItems:["追蹤我","分享給朋友"],bottomTag:"@your_handle",accent:"#4ecdc4",bgColor:"#0a1a1a",textColor:"#e0f0f0",fontHead:"Noto Sans TC",fontBody:"Noto Sans TC",headSize:32},
 ];
 
+/* Full-carousel kits — one click builds a complete multi-page post */
+const CAROUSEL_KITS=[
+  {id:"kit-tips",label:"知識懶人包",desc:"封面 → 重點清單 → 兩頁解說 → 結尾",pages:[
+    {pageType:"cover",topLabel:"懶人包",bigNumber:"5",headline:"個你必須知道的\n{hl}實用技巧{/hl}",subtitle:"看完直接上手",layout:"number-left",decoStyle:"line",accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",headSize:34,numSize:120,bottomTag:"@your_handle"},
+    {pageType:"list",headline:"本篇{hl}重點{/hl}",listItems:["技巧一：先寫這裡","技巧二：再寫這裡","技巧三：接著寫","技巧四：快完成了","技巧五：最後一個"],listStyle:"number",accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",headSize:26,bodySize:15},
+    {pageType:"img-top",headline:"技巧 {hl}01{/hl}",bodyText:"在這裡說明第一個技巧，\n建議搭配一張示意圖。",accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",headSize:28,bodySize:15},
+    {pageType:"img-top",headline:"技巧 {hl}02{/hl}",bodyText:"在這裡說明第二個技巧，\n文字保持精簡有力。",accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",headSize:28,bodySize:15},
+    {pageType:"cta",topLabel:"謝謝你看到這裡",headline:"覺得實用\n記得{hl}收藏起來{/hl}",listItems:["按讚 ❤️","收藏 🔖","分享 ➤"],bottomTag:"@your_handle",accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",headSize:32},
+  ]},
+  {id:"kit-steps",label:"教學步驟",desc:"封面 → Step 1-3 → 結尾",pages:[
+    {pageType:"cover",topLabel:"完整教學",bigNumber:"3",headline:"步驟學會\n{hl}IG輪播排版{/hl}",subtitle:"零基礎也能上手",layout:"number-left",decoStyle:"corners",accent:"#00d2ff",bgColor:"#0a0e1a",textColor:"#d0e0f8",headSize:34,numSize:110,bottomTag:"SWIPE →"},
+    {pageType:"text-top",headline:"Step {hl}01{/hl}",bodyText:"第一步的操作說明，\n下方可以放操作截圖。",accent:"#00d2ff",bgColor:"#0a0e1a",textColor:"#d0e0f8",headSize:30,bodySize:15},
+    {pageType:"text-top",headline:"Step {hl}02{/hl}",bodyText:"第二步的操作說明，\n保持一頁一個重點。",accent:"#00d2ff",bgColor:"#0a0e1a",textColor:"#d0e0f8",headSize:30,bodySize:15},
+    {pageType:"text-top",headline:"Step {hl}03{/hl}",bodyText:"第三步完成！\n記得檢查成果再匯出。",accent:"#00d2ff",bgColor:"#0a0e1a",textColor:"#d0e0f8",headSize:30,bodySize:15},
+    {pageType:"cta",topLabel:"學會了嗎？",headline:"跟著做一次\n{hl}馬上上手{/hl}",listItems:["收藏教學 🔖","分享給朋友 ➤"],bottomTag:"@your_handle",accent:"#00d2ff",bgColor:"#0a0e1a",textColor:"#d0e0f8",headSize:32},
+  ]},
+  {id:"kit-quotes",label:"金句語錄",desc:"封面 → 三頁金句 → 結尾",pages:[
+    {pageType:"cover",topLabel:"每週語錄",bigNumber:"",headline:"寫給\n{hl}努力中的你{/hl}",subtitle:"三句話，三個提醒",layout:"center",decoStyle:"corners",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:42},
+    {pageType:"quote",headline:"慢慢來\n{hl}比較快{/hl}",subtitle:"— 給急著長大的你",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:42,subSize:14},
+    {pageType:"quote",headline:"你的時間有限\n別活在{hl}別人的期待{/hl}裡",subtitle:"— 提醒自己",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:34,subSize:14},
+    {pageType:"quote",headline:"成功不是終點\n{hl}持續{/hl}才是",subtitle:"— 共勉之",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:38,subSize:14},
+    {pageType:"cta",topLabel:"哪句最打中你？",headline:"留言告訴我\n順手{hl}分享出去{/hl}",listItems:["收藏 🔖","分享 ➤"],bottomTag:"@your_handle",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:30},
+  ]},
+];
+
 function makePage(type="cover",base={}){
   const defaults={
     pageType:type,topLabel:"",bigNumber:"",headline:"",subtitle:"",bottomTag:"",
@@ -61,6 +86,7 @@ function makePage(type="cover",base={}){
     fontHead:type==="quote"?"Noto Serif TC":"Noto Sans TC",fontBody:type==="quote"?"Noto Serif TC":"Noto Sans TC",
     headSize:type==="cover"?40:type==="quote"?44:type==="cta"?34:26,numSize:120,topSize:13,subSize:14,
     bodyText:"",bodySize:15,imgColor:"#222230",imgData:null,
+    bgImage:null,bgOverlay:0.35,lineHScale:1,
     listItems:type==="cta"?["按讚 ❤️","收藏 🔖","分享 ➤"]:["項目一","項目二","項目三"],listStyle:"number",
     showPageNum:false,
   };
@@ -111,6 +137,30 @@ const roundRectPath=(ctx,x,y,w,h,r)=>{
   ctx.arcTo(x,y+h,x,y,r);
   ctx.arcTo(x,y,x+w,y,r);
   ctx.closePath();
+};
+
+/* ══════════ MINIMAL ZIP WRITER (store method — PNG/JPG are already compressed) ══════════ */
+const _crcTable=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c;}return t;})();
+const crc32=(u8)=>{let c=0xFFFFFFFF;for(let i=0;i<u8.length;i++)c=_crcTable[(c^u8[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};
+// files: [{name:string, data:Uint8Array}] → application/zip Blob
+const buildZip=(files)=>{
+  const enc=new TextEncoder();const parts=[];const centrals=[];let offset=0;
+  const DOSTIME=0x6000,DOSDATE=((2026-1980)<<9)|(6<<5)|15; // fixed stamp — deterministic output
+  const u16=v=>new Uint8Array([v&255,(v>>>8)&255]);
+  const u32=v=>new Uint8Array([v&255,(v>>>8)&255,(v>>>16)&255,(v>>>24)&255]);
+  for(const f of files){
+    const name=enc.encode(f.name);const crc=crc32(f.data);const sz=f.data.length;
+    parts.push(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(DOSTIME),u16(DOSDATE),u32(crc),u32(sz),u32(sz),u16(name.length),u16(0),name,f.data);
+    centrals.push({name,crc,sz,offset});
+    offset+=30+name.length+sz;
+  }
+  const cdStart=offset;
+  for(const c of centrals){
+    parts.push(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(DOSTIME),u16(DOSDATE),u32(c.crc),u32(c.sz),u32(c.sz),u16(c.name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(c.offset),c.name);
+    offset+=46+c.name.length;
+  }
+  parts.push(u32(0x06054b50),u16(0),u16(0),u16(centrals.length),u16(centrals.length),u32(offset-cdStart),u32(cdStart),u16(0));
+  return new Blob(parts,{type:"application/zip"});
 };
 
 /* ══════════ TEXT MEASUREMENT & AUTO-FIT ══════════ */
@@ -378,8 +428,8 @@ const autoFixPage=(p)=>{
 const STORAGE_KEY="typo-studio-data";
 function saveToStorage(data){
   const build=(keepImg)=>JSON.stringify({
-    pages:data.pages.map(p=>({...p,_imgEl:undefined,imgData:keepImg?(p.imgData||null):null})),
-    curIdx:data.curIdx,ratioId:data.ratioId,
+    pages:data.pages.map(p=>({...p,_imgEl:undefined,_shadow:undefined,_shadowScale:undefined,imgData:keepImg?(p.imgData||null):null,bgImage:keepImg?(p.bgImage||null):null})),
+    curIdx:data.curIdx,ratioId:data.ratioId,exportFmt:data.exportFmt,
   });
   try{
     localStorage.setItem(STORAGE_KEY,build(true));
@@ -463,11 +513,17 @@ function App(){
   const [copied,setCopied]=useState(false);
   const [showAddMenu,setShowAddMenu]=useState(false);
   const [toast,setToast]=useState(null);
-  const [exportFmt,setExportFmt]=useState("png");
+  const [exportFmt,setExportFmt]=useState(saved?.exportFmt||"png");
+  const [showGuide,setShowGuide]=useState(false);
+  const [showHelp,setShowHelp]=useState(false);
+  const [kitArm,setKitArm]=useState(null);
   const fileRef=useRef(null);
   const addBtnRef=useRef(null);
   const projFileRef=useRef(null);
+  const bgFileRef=useRef(null);
   const toastTimerRef=useRef(null);
+  const kitArmTimerRef=useRef(null);
+  const dragIdxRef=useRef(null);
   const kbRef=useRef({});
   const showToast=useCallback((msg)=>{
     setToast(msg);
@@ -515,10 +571,10 @@ function App(){
     saveTimerRef.current=setTimeout(()=>{
       // flush P into pages for save
       const savPages=[...pages];savPages[curIdx]={...P};
-      saveToStorage({pages:savPages,curIdx,ratioId:ratio.id});
+      saveToStorage({pages:savPages,curIdx,ratioId:ratio.id,exportFmt});
     },1000);
     return()=>clearTimeout(saveTimerRef.current);
-  },[P,curIdx,ratio]);
+  },[P,curIdx,ratio,exportFmt]);
 
   /* undo — ref-based */
   const histRef=useRef({stack:[],idx:-1});
@@ -615,6 +671,57 @@ function App(){
   };
   const randomColor=()=>{const c=COLOR_COMBOS[Math.floor(Math.random()*COLOR_COMBOS.length)];setMulti(c);};
 
+  /* ── one-click full carousel kits (two-click confirm — no native dialog) ── */
+  const applyKit=(kit)=>{
+    if(kitArm!==kit.id){
+      setKitArm(kit.id);
+      if(kitArmTimerRef.current)clearTimeout(kitArmTimerRef.current);
+      kitArmTimerRef.current=setTimeout(()=>setKitArm(null),3000);
+      return;
+    }
+    if(kitArmTimerRef.current)clearTimeout(kitArmTimerRef.current);
+    setKitArm(null);
+    const np=kit.pages.map(pg=>makePage(pg.pageType||"cover",pg));
+    setPages(np);setCurIdx(0);setCurrentPage(np[0]);pushHistoryNow(np);
+    showToast(`已載入「${kit.label}」整組模板（${np.length} 頁，Ctrl+Z 可復原）`);
+  };
+
+  /* ── apply current page's style to every page ── */
+  const styleAllPages=()=>{
+    const flushed=[...pages];flushed[curIdx]={...P};
+    const s={accent:P.accent,bgColor:P.bgColor,textColor:P.textColor,fontHead:P.fontHead,fontBody:P.fontBody,lineHScale:P.lineHScale||1};
+    const styled=flushed.map(pg=>({...pg,...s}));
+    setPages(styled);setCurrentPage(styled[curIdx]);pushHistoryNow(styled);
+    showToast("已將本頁樣式套用到全部 "+styled.length+" 頁");
+  };
+
+  /* ── drag-and-drop page reorder ── */
+  const reorderPages=(from,to)=>{
+    if(from===to||from==null||to==null)return;
+    const flushed=[...pages];flushed[curIdx]={...P};
+    const [m]=flushed.splice(from,1);flushed.splice(to,0,m);
+    let nc=curIdx;
+    if(curIdx===from)nc=to;
+    else if(from<curIdx&&to>=curIdx)nc=curIdx-1;
+    else if(from>curIdx&&to<=curIdx)nc=curIdx+1;
+    setPages(flushed);setCurIdx(nc);setCurrentPage(flushed[nc]);pushHistoryNow(flushed);
+  };
+
+  /* ── background image ── */
+  const handleBgUpload=(e)=>{
+    const file=e.target.files?.[0];if(!file)return;
+    const reader=new FileReader();reader.onload=ev=>set("bgImage",ev.target.result);reader.readAsDataURL(file);e.target.value="";
+  };
+
+  /* ── first-run tutorial ── */
+  useEffect(()=>{
+    try{if(!localStorage.getItem("typo-tutorial-seen"))setShowHelp(true);}catch(e){}
+  },[]);
+  const closeHelp=()=>{
+    setShowHelp(false);
+    try{localStorage.setItem("typo-tutorial-seen","1");}catch(e){}
+  };
+
   /* ── auto-fix typography ── */
   const autoFixCurrent=()=>{setMulti(autoFixPage(P));showToast("已自動修正本頁排版");};
   const autoFixAll=()=>{
@@ -635,7 +742,7 @@ function App(){
   /* ── project import / export (full carousel as JSON) ── */
   const exportProject=()=>{
     const flushed=[...pages];flushed[curIdx]={...P};
-    const data={app:"typo-studio",version:2,ratioId:ratio.id,pages:flushed.map(pg=>({...pg,_imgEl:undefined}))};
+    const data={app:"typo-studio",version:2,ratioId:ratio.id,pages:flushed.map(pg=>({...pg,_imgEl:undefined,_shadow:undefined,_shadowScale:undefined}))};
     const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
     const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=`typo-project-${Date.now()}.json`;a.click();URL.revokeObjectURL(u);
     showToast("已匯出專案 JSON");
@@ -671,7 +778,17 @@ function App(){
     const p=data||P;const r=aspectRatio||ratio;
     const w=size;const h=size*(r.h/r.w);const sc=size/340;
     const pt=p.pageType||"cover";
-    const bgStyle={width:w,height:h,background:p.bgColor,position:"relative",overflow:"hidden",display:"flex",flexDirection:"column"};
+    // Background image rides as CSS layers on the root (no extra divs → no z-index fights);
+    // text-shadow is inherited, so setting it once here covers every text node on the page.
+    const ov=p.bgOverlay!=null?p.bgOverlay:0.35;
+    const bgStyle={
+      width:w,height:h,
+      background:p.bgImage
+        ?`linear-gradient(rgba(0,0,0,${ov}),rgba(0,0,0,${ov})),url("${p.bgImage}") center/cover no-repeat #111`
+        :p.bgColor,
+      textShadow:p.bgImage?`0 ${2*sc}px ${12*sc}px rgba(0,0,0,0.55)`:undefined,
+      position:"relative",overflow:"hidden",display:"flex",flexDirection:"column",
+    };
 
     const ImgArea=({style})=>{
       const base={background:p.imgData?`url(${p.imgData}) center/cover no-repeat`:p.imgColor||"#222230",display:"flex",alignItems:"center",justifyContent:"center",...style};
@@ -715,6 +832,7 @@ function App(){
     };
 
     if(pt==="cover"){
+      const LH=p.lineHScale||1;
       const isNumLeft=p.layout==="number-left"&&p.bigNumber;
       const pad=w*0.1;
       // estimate big number width (character-aspect ≈ 0.55 for digits)
@@ -738,7 +856,7 @@ function App(){
           {isNumLeft&&<div style={{fontSize:numPx,fontFamily:`"${p.fontHead}",sans-serif`,fontWeight:900,color:p.accent,lineHeight:0.9,flexShrink:0,textShadow:`0 0 ${40*sc}px ${p.accent}30`}}>{p.bigNumber}</div>}
           <div style={{display:"flex",flexDirection:"column",gap:0,minWidth:0,flex:isNumLeft?1:undefined}}>
             {isNumLeft&&p.topLabel&&<div style={{fontSize:effTop,fontFamily:`"${p.fontBody}",sans-serif`,color:p.accent,fontWeight:700,letterSpacing:4*sc,textTransform:"uppercase",marginBottom:h*0.015}}>{p.topLabel}</div>}
-            <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.35,letterSpacing:2*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
+            <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.35*LH,letterSpacing:2*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
               {headLines.map((line,li)=><div key={li}>{renderHL(line,p.accent,p.textColor)}</div>)}
             </div>
             {p.subtitle&&<div style={{fontSize:effSub,fontFamily:`"${p.fontBody}",sans-serif`,color:p.textColor,opacity:0.5,marginTop:h*0.025,letterSpacing:2*sc,fontWeight:400,wordBreak:"break-word"}}>{p.subtitle}</div>}
@@ -750,6 +868,7 @@ function App(){
     }
 
     if(pt==="img-top"||pt==="text-top"){
+      const LH=p.lineHScale||1;
       const imgH=h*0.48;
       const padH=w*0.08,padV=w*0.06;
       const txtW=Math.max(40,w-padH*2);
@@ -758,14 +877,14 @@ function App(){
       const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(10,12*sc));
       const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-      const headBlockH=headLines.length*effHead*1.4+8*sc;
+      const headBlockH=headLines.length*effHead*1.4*LH+8*sc;
       const baseBody=(p.bodySize||15)*sc;
-      const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7,p.fontBody,"400",Math.max(9,10*sc));
+      const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7*LH,p.fontBody,"400",Math.max(9,10*sc));
       const textBlock=(<div style={{flex:1,padding:`${padV}px ${padH}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden"}}>
-        <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
+        <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4*LH,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>
-        {p.bodyText&&<div style={{fontFamily:`"${p.fontBody}",sans-serif`,fontSize:bodyRes.fontSize,color:p.textColor,opacity:0.7,lineHeight:1.7,wordBreak:"break-word",overflowWrap:"break-word"}}>
+        {p.bodyText&&<div style={{fontFamily:`"${p.fontBody}",sans-serif`,fontSize:bodyRes.fontSize,color:p.textColor,opacity:0.7,lineHeight:1.7*LH,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {bodyRes.lines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>}
       </div>);
@@ -774,6 +893,7 @@ function App(){
     }
 
     if(pt==="side-lr"||pt==="side-rl"){
+      const LH=p.lineHScale||1;
       const imgW=w*0.45;
       const pad=w*0.06;
       const txtW=Math.max(30,w-imgW-pad*2);
@@ -782,14 +902,14 @@ function App(){
       const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(9,11*sc));
       const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-      const headBlockH=headLines.length*effHead*1.4+8*sc;
+      const headBlockH=headLines.length*effHead*1.4*LH+8*sc;
       const baseBody=(p.bodySize||14)*sc;
-      const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7,p.fontBody,"400",Math.max(8,10*sc));
+      const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7*LH,p.fontBody,"400",Math.max(8,10*sc));
       const textBlock=(<div style={{flex:1,padding:`${pad}px ${pad}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden"}}>
-        <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
+        <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4*LH,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>
-        {p.bodyText&&<div style={{fontFamily:`"${p.fontBody}",sans-serif`,fontSize:bodyRes.fontSize,color:p.textColor,opacity:0.7,lineHeight:1.7,wordBreak:"break-word",overflowWrap:"break-word"}}>
+        {p.bodyText&&<div style={{fontFamily:`"${p.fontBody}",sans-serif`,fontSize:bodyRes.fontSize,color:p.textColor,opacity:0.7,lineHeight:1.7*LH,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {bodyRes.lines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>}
       </div>);
@@ -798,6 +918,7 @@ function App(){
     }
 
     if(pt==="list"){
+      const LH=p.lineHScale||1;
       const items=p.listItems||[];
       const isDarkBg=!p.bgColor?.includes?.("f5f0e8")&&!p.bgColor?.includes?.("fafaf5");
       const pad=w*0.08;
@@ -808,7 +929,7 @@ function App(){
       const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(10,12*sc));
       const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
       const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-      const headH=headLines.length*effHead*1.4+16*sc;
+      const headH=headLines.length*effHead*1.4*LH+16*sc;
       const itemSpace=Math.max(20,h-pad*2-headH);
       // shrink items until total fits
       const baseItem=(p.bodySize||15)*sc;
@@ -820,14 +941,14 @@ function App(){
         wrappedItems=items.map(item=>wrapLineWithHL(item,itemTxtW,itFont));
         let totalH=0;
         for(const lines of wrappedItems){
-          totalH+=Math.max(bulletSize,lines.length*itemSize*1.6)+10*sc;
+          totalH+=Math.max(bulletSize,lines.length*itemSize*1.6*LH)+10*sc;
         }
         if(totalH<=itemSpace||itemSize<=minItem)break;
         itemSize=Math.max(minItem,Math.floor(itemSize*0.93));
       }
       return(<div style={bgStyle}>
         <div style={{flex:1,padding:`${pad}px ${pad}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden"}}>
-          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4,marginBottom:16*sc,textAlign:"center",wordBreak:"break-word",overflowWrap:"break-word"}}>
+          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4*LH,marginBottom:16*sc,textAlign:"center",wordBreak:"break-word",overflowWrap:"break-word"}}>
             {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:10*sc}}>
@@ -836,7 +957,7 @@ function App(){
                 <div style={{width:bulletSize,height:bulletSize,borderRadius:p.listStyle==="bullet"?"50%":4*sc,background:p.accent,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12*sc,fontWeight:800,color:isDarkBg?"#000":"#fff",fontFamily:"'Space Mono',monospace",flexShrink:0,marginTop:2*sc}}>
                   {p.listStyle==="number"?i+1:""}
                 </div>
-                <div style={{flex:1,minWidth:0,fontFamily:`"${p.fontBody}",sans-serif`,fontSize:itemSize,color:p.textColor,lineHeight:1.6,opacity:0.85,wordBreak:"break-word",overflowWrap:"break-word"}}>
+                <div style={{flex:1,minWidth:0,fontFamily:`"${p.fontBody}",sans-serif`,fontSize:itemSize,color:p.textColor,lineHeight:1.6*LH,opacity:0.85,wordBreak:"break-word",overflowWrap:"break-word"}}>
                   {lines.map((l,j)=><div key={j}>{renderHL(l,p.accent,p.textColor)}</div>)}
                 </div>
               </div>
@@ -847,6 +968,7 @@ function App(){
       </div>);
     }
     if(pt==="quote"){
+      const LH=p.lineHScale||1;
       const pad=w*0.12;
       const availW=Math.max(40,w-pad*2);
       const baseHead=(p.headSize||44)*sc;
@@ -858,7 +980,7 @@ function App(){
       return(<div style={bgStyle}>
         <div style={{flex:1,padding:pad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center",minWidth:0}}>
           <div style={{fontFamily:`"${p.fontHead}",serif`,fontSize:62*sc,lineHeight:0.6,color:p.accent,opacity:0.85,marginBottom:14*sc,fontWeight:800}}>&ldquo;</div>
-          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.5,letterSpacing:1*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
+          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.5*LH,letterSpacing:1*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
             {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
           </div>
           {p.subtitle&&<><div style={{width:w*0.1,height:Math.max(1,w*0.005),background:p.accent,opacity:0.6,margin:`${h*0.035}px 0 ${h*0.018}px`}}/>
@@ -870,6 +992,7 @@ function App(){
     }
 
     if(pt==="cta"){
+      const LH=p.lineHScale||1;
       const pad=w*0.1;
       const availW=Math.max(40,w-pad*2);
       const baseHead=(p.headSize||34)*sc;
@@ -883,7 +1006,7 @@ function App(){
       return(<div style={bgStyle}>
         <div style={{flex:1,padding:pad,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",textAlign:"center",gap:h*0.022,minWidth:0}}>
           {p.topLabel&&<div style={{fontSize:effTop,color:p.accent,fontWeight:700,letterSpacing:4*sc,textTransform:"uppercase",fontFamily:`"${p.fontBody}",sans-serif`}}>{p.topLabel}</div>}
-          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:800,color:p.textColor,lineHeight:1.3,letterSpacing:1*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
+          <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:800,color:p.textColor,lineHeight:1.3*LH,letterSpacing:1*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
             {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
           </div>
           {chips.length>0&&<div style={{display:"flex",flexWrap:"wrap",gap:7*sc,justifyContent:"center",marginTop:h*0.012}}>
@@ -917,6 +1040,7 @@ function App(){
       totalW+=ctx.measureText(s.text).width;
     }
     const prev=ctx.textAlign;ctx.textAlign="left";
+    if(p._shadow){const ss=p._shadowScale||1;ctx.shadowColor="rgba(0,0,0,0.55)";ctx.shadowOffsetY=2*ss;ctx.shadowBlur=12*ss;}
     let cx=align==="center"?x-totalW/2:(align==="right"?x-totalW:x);
     for(const s of segs){
       ctx.font=`${s.hl?800:wt} ${sz}px "${ff}",sans-serif`;
@@ -924,11 +1048,20 @@ function App(){
       ctx.fillText(s.text,cx,y);
       cx+=ctx.measureText(s.text).width;
     }
+    if(p._shadow){ctx.shadowColor="transparent";ctx.shadowBlur=0;ctx.shadowOffsetY=0;}
     ctx.textAlign=prev;
   };
 
+  // cover-crop an image into the target rect (same math the preview's CSS `cover` uses)
+  const drawImageCover=(ctx,img,x,y,w,h)=>{
+    const ar=img.width/img.height;const tr=w/h;let sw,sh,sx,sy;
+    if(ar>tr){sh=img.height;sw=sh*tr;sx=(img.width-sw)/2;sy=0;}
+    else{sw=img.width;sh=sw/tr;sy=(img.height-sh)/2;sx=0;}
+    ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+  };
+
   const drawImgArea=(ctx,p,x,y,w,h)=>{
-    if(p._imgEl){const img=p._imgEl;const ar=img.width/img.height;const tr=w/h;let sw,sh,sx,sy;if(ar>tr){sh=img.height;sw=sh*tr;sx=(img.width-sw)/2;sy=0;}else{sw=img.width;sh=sw/tr;sy=(img.height-sh)/2;sx=0;}ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);}
+    if(p._imgEl)drawImageCover(ctx,p._imgEl,x,y,w,h);
     else{ctx.fillStyle=p.imgColor||"#222230";ctx.fillRect(x,y,w,h);}
   };
 
@@ -939,23 +1072,33 @@ function App(){
     if(bg.startsWith("linear")){const am=bg.match(/(\d+)deg/);const a=am?+am[1]:135;const rd=(a-90)*Math.PI/180;const g=ctx.createLinearGradient(W/2-Math.cos(rd)*W/2,H/2-Math.sin(rd)*H/2,W/2+Math.cos(rd)*W/2,H/2+Math.sin(rd)*H/2);const cols=bg.match(/#[a-fA-F0-9]{3,8}/g)||[];cols.forEach((cl,i)=>g.addColorStop(i/(cols.length-1),cl));ctx.fillStyle=g;}else ctx.fillStyle=bg;
     ctx.fillRect(0,0,W,H);
 
-    return new Promise(resolve=>{
-      const draw=()=>{
-        if(pt==="cover")drawCover(ctx,p,W,H);
-        else if(pt==="img-top"||pt==="text-top")drawImgText(ctx,p,W,H,pt);
-        else if(pt==="side-lr"||pt==="side-rl")drawSide(ctx,p,W,H,pt);
-        else if(pt==="list")drawList(ctx,p,W,H);
-        else if(pt==="quote")drawQuote(ctx,p,W,H);
-        else if(pt==="cta")drawCta(ctx,p,W,H);
-        if(p.showPageNum){const S=W/340;ctx.font=`600 ${10*S}px "Space Mono",monospace`;ctx.fillStyle=p.textColor;ctx.globalAlpha=0.3;ctx.textAlign="right";ctx.textBaseline="bottom";ctx.fillText(`${pgIdx+1}/${totalPages}`,W-W*0.06,H-H*0.04);ctx.globalAlpha=1;}
-        resolve(c);
-      };
-      if(p.imgData){const img=new Image();img.onload=()=>{p._imgEl=img;draw();};img.src=p.imgData;}else draw();
+    const loadImg=(src)=>new Promise(res=>{
+      if(!src)return res(null);
+      const img=new Image();img.onload=()=>res(img);img.onerror=()=>res(null);img.src=src;
+    });
+    return Promise.all([loadImg(p.imgData),loadImg(p.bgImage)]).then(([contentImg,bgImg])=>{
+      p._imgEl=contentImg||undefined;
+      if(bgImg){
+        drawImageCover(ctx,bgImg,0,0,W,H);
+        ctx.fillStyle=`rgba(0,0,0,${p.bgOverlay!=null?p.bgOverlay:0.35})`;
+        ctx.fillRect(0,0,W,H);
+      }
+      // mirror the preview's inherited text-shadow when a bg photo is present
+      p._shadow=!!bgImg;p._shadowScale=W/340;
+      if(pt==="cover")drawCover(ctx,p,W,H);
+      else if(pt==="img-top"||pt==="text-top")drawImgText(ctx,p,W,H,pt);
+      else if(pt==="side-lr"||pt==="side-rl")drawSide(ctx,p,W,H,pt);
+      else if(pt==="list")drawList(ctx,p,W,H);
+      else if(pt==="quote")drawQuote(ctx,p,W,H);
+      else if(pt==="cta")drawCta(ctx,p,W,H);
+      if(p.showPageNum){const S=W/340;ctx.font=`600 ${10*S}px "Space Mono",monospace`;ctx.fillStyle=p.textColor;ctx.globalAlpha=0.3;ctx.textAlign="right";ctx.textBaseline="bottom";ctx.fillText(`${pgIdx+1}/${totalPages}`,W-W*0.06,H-H*0.04);ctx.globalAlpha=1;}
+      return c;
     });
   };
 
   const drawCover=(ctx,p,W,H)=>{
     const S=W/340;// preview base is 340
+    const LH=p.lineHScale||1;
     ctx.globalAlpha=0.6;
     if(p.decoStyle==="line"){ctx.fillStyle=p.accent;ctx.fillRect(W*0.08,H*0.06,W*0.12,Math.max(3,W*0.006));ctx.fillRect(W-W*0.08-W*0.12,H-H*0.06-Math.max(3,W*0.006),W*0.12,Math.max(3,W*0.006));}
     if(p.decoStyle==="dot"){const r=W*0.012;ctx.beginPath();ctx.arc(W*0.08+r,H*0.06+r,r,0,Math.PI*2);ctx.fillStyle=p.accent;ctx.fill();ctx.beginPath();ctx.arc(W-W*0.08-r,H-H*0.06-r,r,0,Math.PI*2);ctx.fill();}
@@ -986,11 +1129,11 @@ function App(){
       const baseSub=(p.subSize||14)*S;
       const effSub=fitFontSize(p.subtitle,availW,baseSub,p.fontBody,"400",Math.max(8,10*S));
       // vertically center the block around H*0.48
-      const blockH=(p.topLabel?effTop+12*S:0)+headLines.length*effHead*1.35+(p.subtitle?effSub+8*S:0);
+      const blockH=(p.topLabel?effTop+12*S:0)+headLines.length*effHead*1.35*LH+(p.subtitle?effSub+8*S:0);
       let curY=H*0.48-blockH/2;
       ctx.textBaseline="top";
       if(p.topLabel){ctx.font=`700 ${effTop}px "${p.fontBody}",sans-serif`;ctx.fillStyle=p.accent;ctx.fillText(p.topLabel,bx,curY);curY+=effTop+12*S;}
-      headLines.forEach(line=>{drawHLLine(ctx,p,line,bx,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.35;});
+      headLines.forEach(line=>{drawHLLine(ctx,p,line,bx,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.35*LH;});
       if(p.subtitle){ctx.font=`400 ${effSub}px "${p.fontBody}",sans-serif`;ctx.fillStyle=p.textColor;ctx.globalAlpha=0.5;ctx.fillText(p.subtitle,bx,curY+8*S);ctx.globalAlpha=1;}
     }else{
       ctx.textAlign="center";ctx.textBaseline="top";
@@ -1003,10 +1146,10 @@ function App(){
       const effTop=fitFontSize(p.topLabel,availW,baseTop,p.fontBody,"700",Math.max(8,9*S));
       const baseSub=(p.subSize||14)*S;
       const effSub=fitFontSize(p.subtitle,availW,baseSub,p.fontBody,"400",Math.max(8,10*S));
-      const blockH=(p.topLabel?effTop+20*S:0)+headLines.length*effHead*1.35+(p.subtitle?effSub+10*S:0);
+      const blockH=(p.topLabel?effTop+20*S:0)+headLines.length*effHead*1.35*LH+(p.subtitle?effSub+10*S:0);
       let curY=H*0.5-blockH/2;
       if(p.topLabel){ctx.font=`700 ${effTop}px "${p.fontBody}",sans-serif`;ctx.fillStyle=p.accent;ctx.fillText(p.topLabel,W/2,curY);curY+=effTop+20*S;}
-      headLines.forEach(line=>{drawHLLine(ctx,p,line,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.35;});
+      headLines.forEach(line=>{drawHLLine(ctx,p,line,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.35*LH;});
       if(p.subtitle){ctx.font=`400 ${effSub}px "${p.fontBody}",sans-serif`;ctx.fillStyle=p.textColor;ctx.globalAlpha=0.5;ctx.fillText(p.subtitle,W/2,curY+10*S);ctx.globalAlpha=1;}
     }
     if(p.bottomTag){ctx.font=`600 ${9*S}px "Space Mono",monospace`;ctx.fillStyle=p.accent;ctx.globalAlpha=0.4;ctx.textAlign="center";ctx.textBaseline="bottom";ctx.fillText(p.bottomTag,W/2,H-H*0.05);ctx.globalAlpha=1;}
@@ -1014,6 +1157,7 @@ function App(){
 
   const drawImgText=(ctx,p,W,H,pt)=>{
     const S=W/340;
+    const LH=p.lineHScale||1;
     const imgH=H*0.48;const imgY=pt==="img-top"?0:H-imgH;
     drawImgArea(ctx,p,0,imgY,W,imgH);
     const padH=W*0.08,padV=W*0.06;
@@ -1025,20 +1169,20 @@ function App(){
     const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(12,12*S));
     const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-    const headH=headLines.length*effHead*1.4+8*S;
+    const headH=headLines.length*effHead*1.4*LH+8*S;
     const baseBody=(p.bodySize||15)*S;
-    const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headH),baseBody,1.7,p.fontBody,"400",Math.max(10,10*S));
+    const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headH),baseBody,1.7*LH,p.fontBody,"400",Math.max(10,10*S));
     // vertical center
-    const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7:0);
+    const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7*LH:0);
     let curY=textTop+Math.max(0,(txtH-totalH)/2);
     ctx.textAlign="left";ctx.textBaseline="top";
-    headLines.forEach(line=>{drawHLLine(ctx,p,line,padH,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4;});
+    headLines.forEach(line=>{drawHLLine(ctx,p,line,padH,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
     if(p.bodyText){
       curY+=8*S;
       ctx.globalAlpha=0.7;
       bodyRes.lines.forEach(l=>{
         drawHLLine(ctx,p,l,padH,curY,"left",bodyRes.fontSize,p.fontBody,400);
-        curY+=bodyRes.fontSize*1.7;
+        curY+=bodyRes.fontSize*1.7*LH;
       });
       ctx.globalAlpha=1;
     }
@@ -1046,6 +1190,7 @@ function App(){
 
   const drawSide=(ctx,p,W,H,pt)=>{
     const S=W/340;
+    const LH=p.lineHScale||1;
     const imgW=W*0.45;const imgX=pt==="side-lr"?0:W-imgW;const textX=pt==="side-lr"?imgW:0;
     drawImgArea(ctx,p,imgX,0,imgW,H);
     const pad=W*0.06;
@@ -1055,19 +1200,19 @@ function App(){
     const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(11,11*S));
     const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-    const headH=headLines.length*effHead*1.4+8*S;
+    const headH=headLines.length*effHead*1.4*LH+8*S;
     const baseBody=(p.bodySize||14)*S;
-    const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headH),baseBody,1.7,p.fontBody,"400",Math.max(10,10*S));
-    const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7:0);
+    const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headH),baseBody,1.7*LH,p.fontBody,"400",Math.max(10,10*S));
+    const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7*LH:0);
     let curY=pad+Math.max(0,(txtH-totalH)/2);
     ctx.textAlign="left";ctx.textBaseline="top";
-    headLines.forEach(line=>{drawHLLine(ctx,p,line,textX+pad,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4;});
+    headLines.forEach(line=>{drawHLLine(ctx,p,line,textX+pad,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
     if(p.bodyText){
       curY+=8*S;
       ctx.globalAlpha=0.7;
       bodyRes.lines.forEach(l=>{
         drawHLLine(ctx,p,l,textX+pad,curY,"left",bodyRes.fontSize,p.fontBody,400);
-        curY+=bodyRes.fontSize*1.7;
+        curY+=bodyRes.fontSize*1.7*LH;
       });
       ctx.globalAlpha=1;
     }
@@ -1075,6 +1220,7 @@ function App(){
 
   const drawList=(ctx,p,W,H)=>{
     const S=W/340;
+    const LH=p.lineHScale||1;
     const pad=W*0.08;
     const txtW=W-pad*2;
     const bulletSize=24*S;
@@ -1086,7 +1232,7 @@ function App(){
     const effHead=fitFontSize(p.headline,txtW,baseHead,p.fontHead,"700",Math.max(12,12*S));
     const headFont=`700 ${effHead}px "${p.fontHead}",sans-serif`;
     const headLines=wrapAllLines(p.headline,txtW,headFont,true);
-    const headH=headLines.length*effHead*1.4+16*S;
+    const headH=headLines.length*effHead*1.4*LH+16*S;
     const itemSpace=H-pad*2-headH;
     // shrink items uniformly until they fit
     const baseItem=(p.bodySize||15)*S;
@@ -1098,7 +1244,7 @@ function App(){
       wrappedItems=items.map(item=>wrapLineWithHL(item,itemTxtW,itFont));
       let totalH=0;
       for(const lines of wrappedItems){
-        totalH+=Math.max(bulletSize,lines.length*itemSize*1.6)+10*S;
+        totalH+=Math.max(bulletSize,lines.length*itemSize*1.6*LH)+10*S;
       }
       if(totalH<=itemSpace||itemSize<=minItem)break;
       itemSize=Math.max(minItem,Math.floor(itemSize*0.93));
@@ -1106,12 +1252,12 @@ function App(){
     // Vertical center
     let totalBlockH=headH;
     for(const lines of wrappedItems){
-      totalBlockH+=Math.max(bulletSize,lines.length*itemSize*1.6)+10*S;
+      totalBlockH+=Math.max(bulletSize,lines.length*itemSize*1.6*LH)+10*S;
     }
     totalBlockH-=10*S;// last gap
     let curY=Math.max(pad,(H-totalBlockH)/2);
     ctx.textAlign="center";ctx.textBaseline="top";
-    headLines.forEach(line=>{drawHLLine(ctx,p,line,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.4;});
+    headLines.forEach(line=>{drawHLLine(ctx,p,line,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
     curY+=16*S;
     ctx.textAlign="left";
     const bulletR=bulletSize/2;
@@ -1136,15 +1282,16 @@ function App(){
       let ly=by+2*S;
       lines.forEach(l=>{
         drawHLLine(ctx,p,l,bx+bulletSize+bulletGap+4*S,ly,"left",itemSize,p.fontBody,400);
-        ly+=itemSize*1.6;
+        ly+=itemSize*1.6*LH;
       });
       ctx.globalAlpha=1;
-      curY+=Math.max(bulletSize,lines.length*itemSize*1.6)+10*S;
+      curY+=Math.max(bulletSize,lines.length*itemSize*1.6*LH)+10*S;
     });
   };
 
   const drawQuote=(ctx,p,W,H)=>{
     const S=W/340;
+    const LH=p.lineHScale||1;
     const pad=W*0.12;const availW=Math.max(40,W-pad*2);
     const baseHead=(p.headSize||44)*S;
     const effHead=fitFontSize(p.headline,availW,baseHead,p.fontHead,"700",Math.max(12,14*S));
@@ -1154,7 +1301,7 @@ function App(){
     const effSub=fitFontSize(p.subtitle,availW,baseSub,p.fontBody,"600",Math.max(8,10*S));
     const quoteH=62*S*0.7;
     const ruleH=Math.max(2,W*0.005);
-    const headH=headLines.length*effHead*1.5;
+    const headH=headLines.length*effHead*1.5*LH;
     const subBlock=p.subtitle?(H*0.035+ruleH+H*0.018+effSub):0;
     const totalH=quoteH+14*S+headH+subBlock;
     let curY=Math.max(pad,(H-totalH)/2);
@@ -1162,7 +1309,7 @@ function App(){
     ctx.globalAlpha=0.85;ctx.fillStyle=p.accent;ctx.font=`800 ${62*S}px "${p.fontHead}",serif`;
     ctx.fillText("“",W/2,curY);ctx.globalAlpha=1;
     curY+=quoteH+14*S;
-    headLines.forEach(l=>{drawHLLine(ctx,p,l,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.5;});
+    headLines.forEach(l=>{drawHLLine(ctx,p,l,W/2,curY,"center",effHead,p.fontHead,700);curY+=effHead*1.5*LH;});
     if(p.subtitle){
       curY+=H*0.035;
       ctx.fillStyle=p.accent;ctx.globalAlpha=0.6;ctx.fillRect(W/2-W*0.05,curY,W*0.1,ruleH);ctx.globalAlpha=1;
@@ -1175,6 +1322,7 @@ function App(){
 
   const drawCta=(ctx,p,W,H)=>{
     const S=W/340;
+    const LH=p.lineHScale||1;
     const pad=W*0.1;const availW=Math.max(40,W-pad*2);
     const baseHead=(p.headSize||34)*S;
     const effHead=fitFontSize(p.headline,availW,baseHead,p.fontHead,"800",Math.max(12,14*S));
@@ -1194,13 +1342,13 @@ function App(){
       else{row.push(d);rw+=d.w+chipGap;}
     }
     if(row.length)rows.push(row);
-    const headH=headLines.length*effHead*1.3;
+    const headH=headLines.length*effHead*1.3*LH;
     const chipsH=rows.length?(rows.length*chipH+(rows.length-1)*chipGap):0;
     const totalH=(p.topLabel?effTop+gap:0)+headH+(rows.length?gap+chipsH:0)+(p.bottomTag?gap+15*S:0);
     let curY=Math.max(pad,(H-totalH)/2);
     ctx.textAlign="center";ctx.textBaseline="top";
     if(p.topLabel){ctx.font=`700 ${effTop}px "${p.fontBody}",sans-serif`;ctx.fillStyle=p.accent;ctx.fillText(p.topLabel,W/2,curY);curY+=effTop+gap;}
-    headLines.forEach(l=>{drawHLLine(ctx,p,l,W/2,curY,"center",effHead,p.fontHead,800);curY+=effHead*1.3;});
+    headLines.forEach(l=>{drawHLLine(ctx,p,l,W/2,curY,"center",effHead,p.fontHead,800);curY+=effHead*1.3*LH;});
     if(rows.length){
       curY+=gap;
       rows.forEach((r,ri)=>{
@@ -1227,11 +1375,20 @@ function App(){
   },[P,ratio,curIdx,totalPages,exportFmt]);
 
   const doExportAll=useCallback(async()=>{
-    // flush current P into pages for export
+    // flush current P into pages, render every page, bundle as one ZIP (with the project file)
     const allPages=[...pages];allPages[curIdx]={...P};
     const mime=exportFmt==="jpg"?"image/jpeg":"image/png";const ext=exportFmt==="jpg"?"jpg":"png";
-    for(let i=0;i<allPages.length;i++){const c=await renderToCanvas(allPages[i],ratio,i);await new Promise(res=>{c.toBlob(blob=>{const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=`ig-p${i+1}-${ratio.id}-${Date.now()}.${ext}`;a.click();URL.revokeObjectURL(u);setTimeout(res,300);},mime,exportFmt==="jpg"?0.95:undefined);});}
-    showToast("已匯出全部 "+allPages.length+" 頁");
+    const files=[];
+    for(let i=0;i<allPages.length;i++){
+      const c=await renderToCanvas(allPages[i],ratio,i);
+      const blob=await new Promise(res=>c.toBlob(res,mime,exportFmt==="jpg"?0.95:undefined));
+      files.push({name:`typo-p${i+1}.${ext}`,data:new Uint8Array(await blob.arrayBuffer())});
+    }
+    const proj={app:"typo-studio",version:2,ratioId:ratio.id,pages:allPages.map(pg=>({...pg,_imgEl:undefined,_shadow:undefined,_shadowScale:undefined}))};
+    files.push({name:"typo-project.json",data:new TextEncoder().encode(JSON.stringify(proj,null,2))});
+    const zip=buildZip(files);
+    const u=URL.createObjectURL(zip);const a=document.createElement("a");a.href=u;a.download=`typo-carousel-${ratio.id.replace(":","x")}-${Date.now()}.zip`;a.click();URL.revokeObjectURL(u);
+    showToast(`已打包 ${allPages.length} 頁 + 專案檔（ZIP）`);
   },[pages,P,ratio,curIdx,totalPages,exportFmt,showToast]);
 
   /* UI pieces are defined OUTSIDE App — see above */
@@ -1252,6 +1409,7 @@ function App(){
     <div style={{height:"100vh",display:"flex",flexDirection:"column",background:"#0c0c12"}}>
       <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleImageUpload}/>
       <input ref={projFileRef} type="file" accept="application/json,.json" style={{display:"none"}} onChange={importProject}/>
+      <input ref={bgFileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleBgUpload}/>
 
       {/* ═══ TOP BAR ═══ */}
       <div style={{padding:"8px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #1a1a24",background:"#0e0e16",flexShrink:0}}>
@@ -1273,8 +1431,10 @@ function App(){
               <button key={r.id} className={`btn${ratio.id===r.id?" active":""}`} onClick={()=>setRatio(r)} style={{padding:"5px 12px",fontSize:10,fontWeight:600,letterSpacing:1}}>{r.label}</button>
             ))}
           </div>
+          <button className={`btn${showGuide?" active":""}`} onClick={()=>setShowGuide(!showGuide)} title="顯示 IG 介面安全區參考線（僅預覽，不會匯出）" style={{padding:"5px 10px",fontSize:9,fontWeight:600,letterSpacing:1}}>安全區</button>
         </div>
         <div style={{display:"flex",gap:6,alignItems:"center"}}>
+          <button className="btn" onClick={()=>setShowHelp(true)} style={{padding:"6px 11px",fontSize:12,fontWeight:700}} title="使用教學">?</button>
           <button className="btn" onClick={exportProject} style={{padding:"6px 8px"}} title="匯出專案 JSON">{ICO.save}</button>
           <button className="btn" onClick={()=>projFileRef.current?.click()} style={{padding:"6px 8px"}} title="匯入專案 JSON">{ICO.folder}</button>
           <div style={{width:1,height:24,background:"#1e1e2a"}}/>
@@ -1301,6 +1461,11 @@ function App(){
           <div style={{padding:"12px 16px",borderBottom:"1px solid #16161e",display:"flex",alignItems:"center",gap:8,flexShrink:0,position:"relative",zIndex:10,flexWrap:"nowrap"}}>
             {pages.map((pg,i)=>(
               <div key={pg.id} className={`page-thumb${i===curIdx?" active":""}`} onClick={()=>switchPage(i)}
+                draggable
+                onDragStart={()=>{dragIdxRef.current=i;}}
+                onDragOver={e=>e.preventDefault()}
+                onDrop={e=>{e.preventDefault();const from=dragIdxRef.current;dragIdxRef.current=null;if(from!=null&&from!==i)reorderPages(from,i);}}
+                title={`第 ${i+1} 頁（拖曳可調整順序）`}
                 style={{width:52,height:52*(ratio.h/ratio.w),flexShrink:0,background:pg.bgColor||"#111"}}>
                 {/* lightweight mini-thumb: accent bar + type icon, no full Preview render */}
                 <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,color:pg.accent||"#FFD600",opacity:0.6,fontFamily:"'Space Mono',monospace",fontWeight:700,userSelect:"none"}}>
@@ -1340,8 +1505,16 @@ function App(){
 
           {/* Preview area */}
           <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",padding:24,position:"relative"}}>
-            <div style={{borderRadius:4,overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)"}}>
+            <div style={{borderRadius:4,overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)",position:"relative"}}>
               <Preview size={actualPreviewW} aspectRatio={ratio} interactive={true} showPageIndicator={true} pageIndex={curIdx}/>
+              {showGuide&&<div style={{position:"absolute",inset:0,pointerEvents:"none",zIndex:5}}>
+                <div style={{position:"absolute",inset:"5%",border:"1px dashed rgba(255,255,255,0.3)"}}/>
+                {ratio.id==="9:16"&&<>
+                  <div style={{position:"absolute",top:0,left:0,right:0,height:"13%",background:"rgba(255,80,80,0.12)",borderBottom:"1px dashed rgba(255,80,80,0.4)"}}/>
+                  <div style={{position:"absolute",bottom:0,left:0,right:0,height:"17%",background:"rgba(255,80,80,0.12)",borderTop:"1px dashed rgba(255,80,80,0.4)"}}/>
+                  <div style={{position:"absolute",bottom:"18%",right:6,fontSize:8,color:"rgba(255,120,120,0.7)",fontFamily:"'Space Mono',monospace",letterSpacing:1}}>UI 遮擋區</div>
+                </>}
+              </div>}
             </div>
             <div style={{position:"absolute",bottom:12,right:24,fontSize:9,color:"#3a3a58",fontFamily:"'Space Mono',monospace",letterSpacing:2}}>{ratio.px} / P{curIdx+1} of {totalPages}</div>
           </div>
@@ -1363,6 +1536,18 @@ function App(){
 
             {/* ═══ PRESETS ═══ */}
             {tab==="presets"&&<div>
+              <Sec>一鍵整組輪播</Sec>
+              <div style={{display:"flex",flexDirection:"column",gap:6,marginBottom:20}}>
+                {CAROUSEL_KITS.map(k=>(
+                  <button key={k.id} className={`btn${kitArm===k.id?" active":""}`} onClick={()=>applyKit(k)}
+                    style={{padding:"12px 14px",justifyContent:"space-between",textAlign:"left"}}>
+                    {kitArm===k.id
+                      ?<span style={{color:"#ffb86b",fontWeight:700,fontSize:12}}>再按一次確認取代目前頁面（可復原）</span>
+                      :<span><span style={{fontWeight:700,color:"#c0c0d0",fontSize:13}}>{k.label}</span><span style={{fontSize:10,color:"#6060a0",marginLeft:8}}>{k.desc}</span></span>}
+                    <span style={{fontSize:10,color:"#5a5a78",fontFamily:"'Space Mono',monospace",flexShrink:0}}>{k.pages.length}P</span>
+                  </button>
+                ))}
+              </div>
               <Sec>PAGE TYPE</Sec>
               <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6,marginBottom:20}}>
                 {PAGE_TYPES.map(t=>(
@@ -1533,6 +1718,7 @@ function App(){
               {P.pageType==="quote"&&<Sld label="出處字級" value={P.subSize} min={8} max={28} step={1} onChange={e=>set("subSize",+e.target.value)} sfx="px"/>}
               {P.pageType==="cta"&&<Sld label="標籤字級" value={P.topSize} min={8} max={28} step={1} onChange={e=>set("topSize",+e.target.value)} sfx="px"/>}
               {["img-top","text-top","side-lr","side-rl","list"].includes(P.pageType)&&<Sld label="內文字級" value={P.bodySize||15} min={10} max={28} step={1} onChange={e=>set("bodySize",+e.target.value)} sfx="px"/>}
+              <Sld label="行距" value={P.lineHScale||1} min={0.8} max={1.6} step={0.1} onChange={e=>set("lineHScale",+e.target.value)} sfx="x"/>
 
               <div style={{marginTop:8}}><Sec>強調色</Sec></div>
               <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:16}}>
@@ -1563,6 +1749,9 @@ function App(){
                   ))}
                 </div>
               </>}
+              {pages.length>1&&<div style={{marginTop:20}}>
+                <button className="btn" onClick={styleAllPages} style={{width:"100%",padding:"11px",fontSize:11,fontWeight:600,letterSpacing:1}} title="把本頁的配色、字型與行距套用到整份輪播">{ICO.wand} 樣式套用到全部頁面</button>
+              </div>}
             </div>}
 
             {/* ═══ BG ═══ */}
@@ -1589,11 +1778,57 @@ function App(){
               </div>
               <input type="text" value={P.bgColor} onChange={e=>set("bgColor",e.target.value)}
                 placeholder="linear-gradient(135deg, #color1, #color2)" className="field-input" style={{fontSize:11,fontFamily:"'Space Mono',monospace"}}/>
+
+              <div style={{marginTop:20}}><Sec>背景圖片</Sec></div>
+              <div style={{display:"flex",gap:8,marginBottom:12}}>
+                <button className="btn primary" onClick={()=>bgFileRef.current?.click()} style={{flex:1,padding:"12px",fontSize:11,fontWeight:600,letterSpacing:2}}>{ICO.upload} 上傳背景圖</button>
+                {P.bgImage&&<button className="btn danger" onClick={()=>set("bgImage",null)} style={{padding:"12px 16px",fontSize:11,fontWeight:600}}>清除</button>}
+              </div>
+              {P.bgImage&&<Sld label="暗化遮罩" value={Math.round((P.bgOverlay!=null?P.bgOverlay:0.35)*100)} min={0} max={80} step={5} onChange={e=>set("bgOverlay",+e.target.value/100)} sfx="%"/>}
+              <div style={{fontSize:10,color:"#5a5a78",lineHeight:1.6}}>上傳背景圖後會自動蓋上暗化遮罩並替文字加上陰影，確保標題在照片上仍然清晰可讀。</div>
             </div>}
 
           </div>
         </div>
       </div>
+      {/* ═══ TUTORIAL MODAL ═══ */}
+      {showHelp&&<div onClick={closeHelp} style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.72)",zIndex:300,display:"flex",alignItems:"center",justifyContent:"center",animation:"fadeIn .2s ease"}}>
+        <div onClick={e=>e.stopPropagation()} style={{width:580,maxWidth:"92vw",maxHeight:"84vh",overflowY:"auto",background:"#12121c",border:"1px solid #2a2a3a",borderRadius:12,padding:"28px 32px",color:"#c0c0d0",fontFamily:"'Noto Sans TC',sans-serif",boxShadow:"0 24px 80px rgba(0,0,0,0.7)"}}>
+          <div style={{fontSize:16,fontWeight:700,letterSpacing:4,fontFamily:"'Space Mono',monospace",color:"#d0d0e0",marginBottom:4}}>TYPO STUDIO</div>
+          <div style={{fontSize:11,color:"#6060a0",marginBottom:20}}>快速上手教學（隨時可按右上角 ? 重新打開）</div>
+
+          <div style={{fontSize:12,fontWeight:700,color:"#7070a0",letterSpacing:2,marginBottom:8}}>五步驟做出一組輪播</div>
+          <ol style={{fontSize:12.5,lineHeight:2,paddingLeft:20,marginBottom:18,color:"#a8a8c0"}}>
+            <li><b style={{color:"#c8c8dc"}}>選模板</b> — 「模板」分頁點一個封面樣式，或用「一鍵整組輪播」直接生成 5 頁</li>
+            <li><b style={{color:"#c8c8dc"}}>改文字</b> — 「內容」分頁輸入標題；用 <code style={{color:"#FFD600"}}>{"{hl}"}文字{"{/hl}"}</code> 讓局部變強調色</li>
+            <li><b style={{color:"#c8c8dc"}}>調樣式</b> — 「樣式 / 背景」分頁換字型、配色、行距，或上傳背景照片</li>
+            <li><b style={{color:"#c8c8dc"}}>一鍵排版</b> — 按頂欄「✨ 排版」自動修正字級、斷行與對比度</li>
+            <li><b style={{color:"#c8c8dc"}}>匯出</b> — EXPORT 存單頁；ALL 打包整組 ZIP（含專案檔，可再匯入續編）</li>
+          </ol>
+
+          <div style={{fontSize:12,fontWeight:700,color:"#7070a0",letterSpacing:2,marginBottom:8}}>頁面管理</div>
+          <div style={{fontSize:12,lineHeight:1.9,marginBottom:18,color:"#a8a8c0"}}>
+            縮圖列「+」新增 8 種頁型（封面 / 圖文 / 條列 / 金句 / 結尾 CTA）・拖曳縮圖調整順序・DUP 複製本頁・「✨全部」整份自動排版・「樣式套用到全部」統一整組視覺。
+          </div>
+
+          <div style={{fontSize:12,fontWeight:700,color:"#7070a0",letterSpacing:2,marginBottom:8}}>快捷鍵</div>
+          <table style={{fontSize:11.5,lineHeight:1.9,color:"#a8a8c0",marginBottom:18,borderSpacing:0}}>
+            <tbody>
+              {[["Ctrl / ⌘ + Z","復原"],["Ctrl / ⌘ + Y","重做"],["Ctrl / ⌘ + D","複製當前頁"],["← / →","切換上一頁 / 下一頁"]].map(([k,v])=>(
+                <tr key={k}><td style={{paddingRight:18,fontFamily:"'Space Mono',monospace",color:"#8080b0"}}>{k}</td><td>{v}</td></tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div style={{fontSize:12,fontWeight:700,color:"#7070a0",letterSpacing:2,marginBottom:8}}>自動排版引擎</div>
+          <div style={{fontSize:12,lineHeight:1.9,marginBottom:22,color:"#a8a8c0"}}>
+            中文避頭尾（標點不落行首）・多行標題平衡換行・英文與數字不從中間拆開・字級自動縮放不溢出・對比度過低時「樣式」分頁會出現一鍵修正。專案會自動儲存在本機；換電腦請用 💾 匯出 JSON 備份。
+          </div>
+
+          <button className="btn primary" onClick={closeHelp} style={{width:"100%",padding:"13px",fontSize:12,fontWeight:700,letterSpacing:3}}>開始使用</button>
+        </div>
+      </div>}
+
       {toast&&<div style={{position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",background:"#16161e",border:"1px solid #2a2a3a",borderRadius:8,padding:"10px 18px",fontSize:12,color:"#d0d0e0",fontWeight:600,boxShadow:"0 12px 40px rgba(0,0,0,0.6)",zIndex:200,animation:"fi 0.2s ease",fontFamily:"'Noto Sans TC',sans-serif"}}>{toast}</div>}
     </div>
   );

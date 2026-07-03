@@ -2,12 +2,24 @@
 
 本專案版本遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
-## [Unreleased]
+## [2.1.0] — 2026-07-04
+
+### 新增 — 功能大擴充
+- **一鍵整組輪播**：三組完整輪播模板（知識懶人包 / 教學步驟 / 金句語錄），一鍵生成 5 頁結構，兩段式確認防誤觸。
+- **背景照片**：任何頁型可上傳背景圖；自動疊加可調暗化遮罩（0–80%）與文字陰影，預覽與 Canvas 匯出完全同步。
+- **行距控制**：0.8x–1.6x 滑桿，貫穿全部 8 種頁型的預覽與匯出。
+- **ZIP 匯出**：`ALL` 改為打包單一 ZIP（內建零依賴 ZIP writer），內含每頁圖檔 + 專案 JSON。
+- **拖曳排序**：頁面縮圖直接拖曳調整順序。
+- **樣式套用到全部**：一鍵把當前頁的配色 / 字型 / 行距同步到整組。
+- **安全區參考線**：IG 介面遮擋區預覽（9:16 顯示上下 UI 區域），僅預覽不匯出。
+- **內建教學**：首次啟動自動顯示快速上手，`?` 按鈕隨時重看；新增完整 `TUTORIAL.md`。
+- 匯出格式（PNG/JPG）偏好會被記住。
 
 ### 新增 — macOS 支援
 - `package.json` 新增 `mac` 打包設定（universal dmg / zip，同時支援 Intel 與 Apple Silicon），`identity: null` + `hardenedRuntime: false`（個人開源專案，無 Apple Developer 簽章憑證）。
 - 新增 1024×1024 版本的 App 圖示 `assets/icon-mac.png`（macOS `.icns` 需要遠高於 Windows `.ico` 的解析度）。
-- 新增 [`.github/workflows/release.yml`](.github/workflows/release.yml)：push `v*` tag 或手動觸發，用 GitHub Actions 的雲端 macOS / Windows runner 分別編譯兩平台安裝檔並附加到對應 Release（`electron-builder` 無法在 Windows 上跨編 macOS 版）。
+- 新增 GitHub Actions workflow（`docs/release-workflow.yml` 為參考副本，live 檔在 `.github/workflows/release.yml`）：push `v*` tag 或手動觸發，用雲端 macOS / Windows runner 分別編譯兩平台安裝檔並附加到 Release（`electron-builder` 無法在 Windows 上跨編 macOS 版）。
+- `TUTORIAL.md` 含 macOS 安裝與 Gatekeeper 排除教學。
 
 ## [2.0.0] — 2026-06-15
 
