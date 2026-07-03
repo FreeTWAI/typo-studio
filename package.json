@@ -43,6 +43,20 @@
       "allowToChangeInstallationDirectory": true,
       "installerIcon": "assets/icon.ico",
       "uninstallerIcon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [
+        { "target": "dmg", "arch": ["universal"] },
+        { "target": "zip", "arch": ["universal"] }
+      ],
+      "icon": "assets/icon-mac.png",
+      "category": "public.app-category.graphics-design",
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "${productName} ${version}"
     }
   }
 }

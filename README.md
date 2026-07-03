@@ -1,6 +1,6 @@
 # TYPO STUDIO
 
-> 中文友善的 Instagram 輪播貼文排版工具 — 桌面版 (Windows / Electron)
+> 中文友善的 Instagram 輪播貼文排版工具 — 桌面版 (Windows / macOS / Electron)
 
 TYPO STUDIO 是一個離線、免帳號、所見即所得的 IG 貼文產生器。專為中文內容創作者設計：一套**自動排版引擎**幫你處理字級、斷行、避頭尾與對比度，讓你專注在文字本身，匯出即是 1080px 的高解析 PNG / JPG。
 
@@ -48,20 +48,33 @@ TYPO STUDIO 是一個離線、免帳號、所見即所得的 IG 貼文產生器�
 ## 🚀 安裝使用
 
 ### 下載安裝檔（一般使用者）
-到 [Releases](https://github.com/Hao0321/typo-studio/releases) 下載 `TYPO STUDIO Setup x.y.z.exe`，雙擊安裝即可。
+到 [Releases](https://github.com/Hao0321/typo-studio/releases) 下載對應平台的安裝檔：
+
+| 平台 | 檔案 |
+| --- | --- |
+| Windows | `TYPO STUDIO Setup x.y.z.exe`，雙擊安裝 |
+| macOS（Intel / Apple Silicon 通用） | `TYPO STUDIO-x.y.z-universal.dmg`，拖進「應用程式」即可 |
+
+> ⚠️ 兩個平台的安裝檔目前都**沒有付費簽章憑證**（個人開源專案）。
+> - **Windows**：SmartScreen 可能跳「不明發行者」，按「較多資訊」→「仍要執行」。
+> - **macOS**：Gatekeeper 會擋下「無法驗證開發者」。第一次開啟請在「應用程式」資料夾對 App 圖示 **右鍵 → 開啟**（而非直接雙擊），或到「系統設定 → 隱私權與安全性」點「仍要打開」。之後即可正常雙擊啟動。
 
 ### 從原始碼執行（開發者）
 ```bash
 npm install
-npm start          # 啟動桌面版（Electron）
+npm start          # 啟動桌面版（Electron，當前系統）
 ```
 
 ### 打包安裝檔
 ```bash
-npm run dist       # 編譯 JSX → 產生 NSIS 安裝檔到 dist/
+npm run dist       # 編譯 JSX → 依當前系統產生對應安裝檔到 dist/
 npm run pack       # 只打包未壓縮資料夾（除錯用）
 ```
 > `npm run dist` 會先執行 `npm run compile`（babel 把 `vendor/app.jsx` 編譯為 `vendor/app.compiled.js`），再由 `electron-builder` 打包。
+>
+> **⚠️ 跨平台限制**：`electron-builder` 只能在對應系統上打包該系統的安裝檔——macOS 版（`.app` / `.dmg`）**必須在 macOS 上編譯**（symlink + 程式碼簽章是 macOS 專屬工具），無法在 Windows／Linux 上跨編。本專案透過 [`.github/workflows/release.yml`](.github/workflows/release.yml) 用 GitHub Actions 的雲端 macOS / Windows runner 自動編譯兩個平台的安裝檔，並附加到對應的 GitHub Release：
+> - Push 一個 `v*` tag 會自動觸發雙平台建置。
+> - 也可以到 [Actions 頁面](https://github.com/Hao0321/typo-studio/actions/workflows/release.yml)手動 `Run workflow`，指定要附加安裝檔的 release tag。
 
 ---
 

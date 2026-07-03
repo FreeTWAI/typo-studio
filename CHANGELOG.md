@@ -2,6 +2,13 @@
 
 本專案版本遵循 [Semantic Versioning](https://semver.org/lang/zh-TW/)。
 
+## [Unreleased]
+
+### 新增 — macOS 支援
+- `package.json` 新增 `mac` 打包設定（universal dmg / zip，同時支援 Intel 與 Apple Silicon），`identity: null` + `hardenedRuntime: false`（個人開源專案，無 Apple Developer 簽章憑證）。
+- 新增 1024×1024 版本的 App 圖示 `assets/icon-mac.png`（macOS `.icns` 需要遠高於 Windows `.ico` 的解析度）。
+- 新增 [`.github/workflows/release.yml`](.github/workflows/release.yml)：push `v*` tag 或手動觸發，用 GitHub Actions 的雲端 macOS / Windows runner 分別編譯兩平台安裝檔並附加到對應 Release（`electron-builder` 無法在 Windows 上跨編 macOS 版）。
+
 ## [2.0.0] — 2026-06-15
 
 ### 新增 — 自動排版引擎

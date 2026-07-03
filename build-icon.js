@@ -22,13 +22,13 @@ try {
 fs = require('fs');
 path = require('path');
 
-function generate() {
-  const S = 256;
+function drawIcon(S) {
   const c = createCanvas(S, S);
   const ctx = c.getContext('2d');
+  const k = S / 256; // scale factor relative to the original 256px design
 
   // Background — dark rounded rect
-  const r = 48;
+  const r = 48 * k;
   ctx.fillStyle = '#0e0e16';
   ctx.beginPath();
   ctx.moveTo(r, 0);
@@ -43,36 +43,45 @@ function generate() {
   ctx.fill();
 
   // Accent gradient line at top
-  const grd = ctx.createLinearGradient(50, 0, 206, 0);
+  const grd = ctx.createLinearGradient(50 * k, 0, 206 * k, 0);
   grd.addColorStop(0, '#FFD600');
   grd.addColorStop(0.5, '#ff4757');
   grd.addColorStop(1, '#ff00cc');
   ctx.fillStyle = grd;
-  ctx.fillRect(50, 40, 156, 4);
+  ctx.fillRect(50 * k, 40 * k, 156 * k, 4 * k);
 
   // "T" letter — big and bold
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 140px "Segoe UI", "Arial", sans-serif';
+  ctx.font = `bold ${140 * k}px "Segoe UI", "Arial", sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('T', S / 2, S / 2 + 8);
+  ctx.fillText('T', S / 2, S / 2 + 8 * k);
 
   // Small accent dot
   ctx.fillStyle = '#FFD600';
   ctx.beginPath();
-  ctx.arc(S / 2 + 52, S / 2 - 48, 8, 0, Math.PI * 2);
+  ctx.arc(S / 2 + 52 * k, S / 2 - 48 * k, 8 * k, 0, Math.PI * 2);
   ctx.fill();
 
   // Bottom line
   ctx.fillStyle = grd;
-  ctx.fillRect(90, S - 44, 76, 3);
+  ctx.fillRect(90 * k, S - 44 * k, 76 * k, 3 * k);
 
-  // Save
+  return c;
+}
+
+function generate() {
   const outDir = path.join(__dirname, 'assets');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-  const buf = c.toBuffer('image/png');
-  fs.writeFileSync(path.join(outDir, 'icon.png'), buf);
+
+  // 256px — used as the Windows source icon (converted to .ico separately)
+  fs.writeFileSync(path.join(outDir, 'icon.png'), drawIcon(256).toBuffer('image/png'));
   console.log('Icon generated: assets/icon.png (256x256)');
+
+  // 1024px — macOS .icns needs much higher resolution for Retina displays;
+  // electron-builder auto-converts this into .icns during the mac build.
+  fs.writeFileSync(path.join(outDir, 'icon-mac.png'), drawIcon(1024).toBuffer('image/png'));
+  console.log('Icon generated: assets/icon-mac.png (1024x1024)');
 }
 
 function generateFallbackIcon() {
