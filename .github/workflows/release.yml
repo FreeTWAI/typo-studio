@@ -1,0 +1,60 @@
+name: Build Desktop Installers
+
+# electron-builder can only produce a working macOS .app/.dmg on an actual
+# macOS host (app bundles need symlinks + an ad-hoc code signature that only
+# Apple's own tools can create) — so the mac job runs on GitHub's hosted
+# macos-latest runner. The windows job runs alongside it for symmetry so a
+# tag push builds both installers in one go.
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Existing GitHub Release tag to attach the built installers to"
+        required: true
+        default: "v2.0.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run compile
+      - run: npx electron-builder --mac --publish never
+      - name: Attach installers to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.release_tag || github.ref_name }}"
+          gh release upload "$TAG" dist/*.dmg dist/*.zip --clobber --repo "${{ github.repository }}"
+
+  build-win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run compile
+      - run: npx electron-builder --win --publish never
+      - name: Attach installer to release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.release_tag || github.ref_name }}"
+          gh release upload "$TAG" dist/*.exe --clobber --repo "${{ github.repository }}"
+
