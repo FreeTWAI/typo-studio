@@ -1,0 +1,16 @@
+{
+  "name": "TYPO STUDIO — IG 輪播排版工具",
+  "short_name": "TYPO STUDIO",
+  "description": "中文友善的 IG 輪播貼文排版工具（自動排版引擎 / 避頭尾 / 一鍵修正）",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c0c12",
+  "theme_color": "#0c0c12",
+  "icons": [
+    { "src": "assets/icon.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-mac.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-mac.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
+  ]
+}

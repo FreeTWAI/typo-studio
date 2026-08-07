@@ -76,6 +76,20 @@ const CAROUSEL_KITS=[
     {pageType:"quote",headline:"成功不是終點\n{hl}持續{/hl}才是",subtitle:"— 共勉之",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:38,subSize:14},
     {pageType:"cta",topLabel:"哪句最打中你？",headline:"留言告訴我\n順手{hl}分享出去{/hl}",listItems:["收藏 🔖","分享 ➤"],bottomTag:"@your_handle",accent:"#c9a84c",bgColor:"#0c0c0c",textColor:"#e8e0d4",fontHead:"Noto Serif TC",fontBody:"Noto Serif TC",headSize:30},
   ]},
+  {id:"kit-product",label:"產品開箱",desc:"封面 → 兩頁特色 → 重點規格 → 結尾",pages:[
+    {pageType:"cover",topLabel:"開箱實測",bigNumber:"",headline:"這個{hl}小工具{/hl}\n讓我效率翻倍",subtitle:"用了三個月的真實心得",layout:"center",decoStyle:"corners",accent:"#e07a5f",bgColor:"#fafaf5",textColor:"#2c2c2c",headSize:38,bottomTag:"@your_handle"},
+    {pageType:"side-lr",headline:"特色 {hl}01{/hl}",bodyText:"第一個亮點的說明，\n左邊放產品照片。",accent:"#e07a5f",bgColor:"#fafaf5",textColor:"#2c2c2c",imgColor:"#ece5da",headSize:24,bodySize:14},
+    {pageType:"side-rl",headline:"特色 {hl}02{/hl}",bodyText:"第二個亮點的說明，\n右邊放使用情境圖。",accent:"#e07a5f",bgColor:"#fafaf5",textColor:"#2c2c2c",imgColor:"#ece5da",headSize:24,bodySize:14},
+    {pageType:"list",headline:"重點{hl}總整理{/hl}",listItems:["優點一：寫在這裡","優點二：寫在這裡","小缺點：誠實說一個","適合誰：一句話總結"],listStyle:"number",accent:"#e07a5f",bgColor:"#fafaf5",textColor:"#2c2c2c",headSize:26,bodySize:15},
+    {pageType:"cta",topLabel:"想看更多開箱？",headline:"追蹤我\n不錯過{hl}下一篇{/hl}",listItems:["追蹤 ➕","收藏 🔖","分享 ➤"],bottomTag:"@your_handle",accent:"#e07a5f",bgColor:"#fafaf5",textColor:"#2c2c2c",headSize:32},
+  ]},
+  {id:"kit-mistakes",label:"常見錯誤",desc:"封面 → 三個錯誤 → 結尾",pages:[
+    {pageType:"cover",topLabel:"你中了幾個？",bigNumber:"3",headline:"個新手最常犯的\n{hl}排版錯誤{/hl}",subtitle:"最後一個 90% 的人都會踩",layout:"number-left",decoStyle:"line",accent:"#ff6b6b",bgColor:"#0d0d14",textColor:"#e8e8f0",headSize:32,numSize:110,bottomTag:"SWIPE →"},
+    {pageType:"img-top",headline:"錯誤 {hl}01{/hl}",bodyText:"說明第一個常見錯誤，\n再給一句正確做法。",accent:"#ff6b6b",bgColor:"#0d0d14",textColor:"#e8e8f0",imgColor:"#181828",headSize:28,bodySize:15},
+    {pageType:"img-top",headline:"錯誤 {hl}02{/hl}",bodyText:"說明第二個常見錯誤，\n附上對比示意圖更有感。",accent:"#ff6b6b",bgColor:"#0d0d14",textColor:"#e8e8f0",imgColor:"#181828",headSize:28,bodySize:15},
+    {pageType:"img-top",headline:"錯誤 {hl}03{/hl}",bodyText:"壓軸的錯誤放最後，\n讓讀者忍不住分享。",accent:"#ff6b6b",bgColor:"#0d0d14",textColor:"#e8e8f0",imgColor:"#181828",headSize:28,bodySize:15},
+    {pageType:"cta",topLabel:"看完快檢查一次",headline:"轉發給\n{hl}還在踩雷{/hl}的朋友",listItems:["收藏 🔖","分享 ➤"],bottomTag:"@your_handle",accent:"#ff6b6b",bgColor:"#0d0d14",textColor:"#e8e8f0",headSize:32},
+  ]},
 ];
 
 function makePage(type="cover",base={}){
@@ -85,7 +99,7 @@ function makePage(type="cover",base={}){
     accent:"#FFD600",bgColor:"#111111",textColor:"#ffffff",
     fontHead:type==="quote"?"Noto Serif TC":"Noto Sans TC",fontBody:type==="quote"?"Noto Serif TC":"Noto Sans TC",
     headSize:type==="cover"?40:type==="quote"?44:type==="cta"?34:26,numSize:120,topSize:13,subSize:14,
-    bodyText:"",bodySize:15,imgColor:"#222230",imgData:null,
+    bodyText:"",bodySize:15,imgColor:"#222230",imgData:null,textAlign:"left",
     bgImage:null,bgOverlay:0.35,lineHScale:1,
     listItems:type==="cta"?["按讚 ❤️","收藏 🔖","分享 ➤"]:["項目一","項目二","項目三"],listStyle:"number",
     showPageNum:false,
@@ -459,6 +473,26 @@ const Sld=({label,value,min,max,step,onChange,sfx=""})=>(
   </div>
 );
 
+/* Viewport hook — re-renders on resize so preview sizing + mobile layout stay correct.
+   A slow interval self-corrects cases where no resize event fires (e.g. embedded
+   webviews that lay out while hidden); the equality guard makes those ticks free. */
+const useViewport=()=>{
+  const [vp,setVp]=useState({w:window.innerWidth||1280,h:window.innerHeight||800});
+  useEffect(()=>{
+    const sync=()=>{
+      const w=window.innerWidth||1280,h=window.innerHeight||800;
+      setVp(p=>(p.w===w&&p.h===h)?p:{w,h});
+    };
+    window.addEventListener("resize",sync);
+    window.addEventListener("orientationchange",sync);
+    document.addEventListener("visibilitychange",sync);
+    const iv=setInterval(sync,1000);
+    sync();
+    return()=>{window.removeEventListener("resize",sync);window.removeEventListener("orientationchange",sync);document.removeEventListener("visibilitychange",sync);clearInterval(iv);};
+  },[]);
+  return vp;
+};
+
 /* IME-safe input hook */
 const useIMEInput=(value,onChange)=>{
   const [local,setLocal]=useState(value);
@@ -517,6 +551,10 @@ function App(){
   const [showGuide,setShowGuide]=useState(false);
   const [showHelp,setShowHelp]=useState(false);
   const [kitArm,setKitArm]=useState(null);
+  const vp=useViewport();
+  const isMobile=vp.w<820;
+  const [sheetOpen,setSheetOpen]=useState(true);
+  const [fontTarget,setFontTarget]=useState("both");
   const fileRef=useRef(null);
   const addBtnRef=useRef(null);
   const projFileRef=useRef(null);
@@ -693,6 +731,14 @@ function App(){
     const styled=flushed.map(pg=>({...pg,...s}));
     setPages(styled);setCurrentPage(styled[curIdx]);pushHistoryNow(styled);
     showToast("已將本頁樣式套用到全部 "+styled.length+" 頁");
+  };
+
+  /* ── apply this page's bottom tag (@handle) to every page that shows one ── */
+  const tagAllPages=()=>{
+    const flushed=[...pages];flushed[curIdx]={...P};
+    const tagged=flushed.map(pg=>({...pg,bottomTag:P.bottomTag||""}));
+    setPages(tagged);setCurrentPage(tagged[curIdx]);pushHistoryNow(tagged);
+    showToast((P.bottomTag?"已將「"+P.bottomTag+"」套用到全部 ":"已清除全部頁面的帳號標記，共 ")+tagged.length+" 頁");
   };
 
   /* ── drag-and-drop page reorder ── */
@@ -880,7 +926,7 @@ function App(){
       const headBlockH=headLines.length*effHead*1.4*LH+8*sc;
       const baseBody=(p.bodySize||15)*sc;
       const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7*LH,p.fontBody,"400",Math.max(9,10*sc));
-      const textBlock=(<div style={{flex:1,padding:`${padV}px ${padH}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden"}}>
+      const textBlock=(<div style={{flex:1,padding:`${padV}px ${padH}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden",textAlign:p.textAlign==="center"?"center":"left"}}>
         <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4*LH,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>
@@ -905,7 +951,7 @@ function App(){
       const headBlockH=headLines.length*effHead*1.4*LH+8*sc;
       const baseBody=(p.bodySize||14)*sc;
       const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headBlockH),baseBody,1.7*LH,p.fontBody,"400",Math.max(8,10*sc));
-      const textBlock=(<div style={{flex:1,padding:`${pad}px ${pad}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden"}}>
+      const textBlock=(<div style={{flex:1,padding:`${pad}px ${pad}px`,display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0,overflow:"hidden",textAlign:p.textAlign==="center"?"center":"left"}}>
         <div style={{fontFamily:`"${p.fontHead}",sans-serif`,fontSize:effHead,fontWeight:700,color:p.textColor,lineHeight:1.4*LH,marginBottom:8*sc,wordBreak:"break-word",overflowWrap:"break-word"}}>
           {headLines.map((l,i)=><div key={i}>{renderHL(l,p.accent,p.textColor)}</div>)}
         </div>
@@ -1175,13 +1221,15 @@ function App(){
     // vertical center
     const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7*LH:0);
     let curY=textTop+Math.max(0,(txtH-totalH)/2);
+    const alignC=p.textAlign==="center";
+    const ax=alignC?W/2:padH;
     ctx.textAlign="left";ctx.textBaseline="top";
-    headLines.forEach(line=>{drawHLLine(ctx,p,line,padH,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
+    headLines.forEach(line=>{drawHLLine(ctx,p,line,ax,curY,alignC?"center":"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
     if(p.bodyText){
       curY+=8*S;
       ctx.globalAlpha=0.7;
       bodyRes.lines.forEach(l=>{
-        drawHLLine(ctx,p,l,padH,curY,"left",bodyRes.fontSize,p.fontBody,400);
+        drawHLLine(ctx,p,l,ax,curY,alignC?"center":"left",bodyRes.fontSize,p.fontBody,400);
         curY+=bodyRes.fontSize*1.7*LH;
       });
       ctx.globalAlpha=1;
@@ -1205,13 +1253,15 @@ function App(){
     const bodyRes=fitAndWrap(p.bodyText,txtW,Math.max(0,txtH-headH),baseBody,1.7*LH,p.fontBody,"400",Math.max(10,10*S));
     const totalH=headH+(p.bodyText?bodyRes.lines.length*bodyRes.fontSize*1.7*LH:0);
     let curY=pad+Math.max(0,(txtH-totalH)/2);
+    const alignC=p.textAlign==="center";
+    const ax=alignC?textX+pad+txtW/2:textX+pad;
     ctx.textAlign="left";ctx.textBaseline="top";
-    headLines.forEach(line=>{drawHLLine(ctx,p,line,textX+pad,curY,"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
+    headLines.forEach(line=>{drawHLLine(ctx,p,line,ax,curY,alignC?"center":"left",effHead,p.fontHead,700);curY+=effHead*1.4*LH;});
     if(p.bodyText){
       curY+=8*S;
       ctx.globalAlpha=0.7;
       bodyRes.lines.forEach(l=>{
-        drawHLLine(ctx,p,l,textX+pad,curY,"left",bodyRes.fontSize,p.fontBody,400);
+        drawHLLine(ctx,p,l,ax,curY,alignC?"center":"left",bodyRes.fontSize,p.fontBody,400);
         curY+=bodyRes.fontSize*1.7*LH;
       });
       ctx.globalAlpha=1;
@@ -1370,7 +1420,7 @@ function App(){
 
   const doExport=useCallback(async(toClipboard=false)=>{
     const c=await renderToCanvas(P,ratio,curIdx);
-    if(toClipboard){c.toBlob(async blob=>{try{await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);setCopied(true);setTimeout(()=>setCopied(false),2000);}catch(e){console.error(e);}},"image/png");}
+    if(toClipboard){c.toBlob(async blob=>{try{await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);setCopied(true);setTimeout(()=>setCopied(false),2000);}catch(e){console.error(e);showToast("此瀏覽器不支援複製圖片，請改用 EXPORT 下載");}},"image/png");}
     else{const mime=exportFmt==="jpg"?"image/jpeg":"image/png";const ext=exportFmt==="jpg"?"jpg":"png";c.toBlob(blob=>{const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=`ig-p${curIdx+1}-${ratio.id}-${Date.now()}.${ext}`;a.click();URL.revokeObjectURL(u);},mime,exportFmt==="jpg"?0.95:undefined);}
   },[P,ratio,curIdx,totalPages,exportFmt]);
 
@@ -1399,32 +1449,35 @@ function App(){
   kbRef.current={switchPage,duplicatePage,curIdx,total:pages.length};
 
   /* ══════════ MAIN LAYOUT ══════════ */
-  /* Desktop: left=preview, right=editor. Fluid. */
-  const previewMaxH=window.innerHeight-120;
-  const previewMaxW=Math.min(500,window.innerWidth*0.45);
+  /* Desktop: left=preview, right=editor. Mobile: preview on top, editor sheet below. */
+  const sheetH=Math.round(vp.h*0.44);
+  const previewMaxH=isMobile
+    ?Math.max(160,vp.h-(sheetOpen?sheetH:46)-176) // top bar (2 rows) + strip + paddings
+    :vp.h-120;
+  const previewMaxW=isMobile?vp.w-28:Math.min(500,vp.w*0.45);
   const idealH=previewMaxW*(ratio.h/ratio.w);
   const actualPreviewW=idealH>previewMaxH?previewMaxW*(previewMaxH/idealH):previewMaxW;
 
   return(
-    <div style={{height:"100vh",display:"flex",flexDirection:"column",background:"#0c0c12"}}>
+    <div style={{height:vp.h,display:"flex",flexDirection:"column",background:"#0c0c12"}}>
       <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleImageUpload}/>
       <input ref={projFileRef} type="file" accept="application/json,.json" style={{display:"none"}} onChange={importProject}/>
       <input ref={bgFileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleBgUpload}/>
 
       {/* ═══ TOP BAR ═══ */}
-      <div style={{padding:"8px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",borderBottom:"1px solid #1a1a24",background:"#0e0e16",flexShrink:0}}>
-        <div style={{display:"flex",alignItems:"center",gap:16}}>
+      <div style={{padding:isMobile?"6px 10px":"8px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",rowGap:6,borderBottom:"1px solid #1a1a24",background:"#0e0e16",flexShrink:0}}>
+        <div style={{display:"flex",alignItems:"center",gap:isMobile?8:16,flexWrap:"wrap",rowGap:6}}>
           <div>
-            <div style={{fontSize:13,fontWeight:700,letterSpacing:6,fontFamily:"'Space Mono',monospace",color:"#d0d0e0"}}>TYPO STUDIO</div>
-            <div style={{fontSize:8,color:"#4a4a68",letterSpacing:3,marginTop:1,fontFamily:"'Space Mono',monospace"}}>IG CAROUSEL COMPOSER</div>
+            <div style={{fontSize:13,fontWeight:700,letterSpacing:isMobile?3:6,fontFamily:"'Space Mono',monospace",color:"#d0d0e0"}}>TYPO STUDIO</div>
+            {!isMobile&&<div style={{fontSize:8,color:"#4a4a68",letterSpacing:3,marginTop:1,fontFamily:"'Space Mono',monospace"}}>IG CAROUSEL COMPOSER</div>}
           </div>
-          <div style={{width:1,height:24,background:"#1e1e2a"}}/>
+          {!isMobile&&<div style={{width:1,height:24,background:"#1e1e2a"}}/>}
           {/* Undo/Redo */}
           <div style={{display:"flex",gap:4}}>
             <button className="btn" onClick={undo} style={{padding:"6px 8px"}} title="復原 Ctrl+Z">{ICO.undo}</button>
             <button className="btn" onClick={redo} style={{padding:"6px 8px"}} title="重做 Ctrl+Y">{ICO.redo}</button>
           </div>
-          <div style={{width:1,height:24,background:"#1e1e2a"}}/>
+          {!isMobile&&<div style={{width:1,height:24,background:"#1e1e2a"}}/>}
           {/* Ratio */}
           <div style={{display:"flex",gap:4}}>
             {RATIOS.map(r=>(
@@ -1433,14 +1486,14 @@ function App(){
           </div>
           <button className={`btn${showGuide?" active":""}`} onClick={()=>setShowGuide(!showGuide)} title="顯示 IG 介面安全區參考線（僅預覽，不會匯出）" style={{padding:"5px 10px",fontSize:9,fontWeight:600,letterSpacing:1}}>安全區</button>
         </div>
-        <div style={{display:"flex",gap:6,alignItems:"center"}}>
+        <div style={{display:"flex",gap:6,alignItems:"center",flexWrap:"wrap",rowGap:6}}>
           <button className="btn" onClick={()=>setShowHelp(true)} style={{padding:"6px 11px",fontSize:12,fontWeight:700}} title="使用教學">?</button>
           <button className="btn" onClick={exportProject} style={{padding:"6px 8px"}} title="匯出專案 JSON">{ICO.save}</button>
           <button className="btn" onClick={()=>projFileRef.current?.click()} style={{padding:"6px 8px"}} title="匯入專案 JSON">{ICO.folder}</button>
-          <div style={{width:1,height:24,background:"#1e1e2a"}}/>
+          {!isMobile&&<div style={{width:1,height:24,background:"#1e1e2a"}}/>}
           <button className="btn active" onClick={autoFixCurrent} style={{padding:"6px 10px",fontSize:9,fontWeight:700,letterSpacing:1}} title="自動修正本頁排版（字級·斷行·對比）">{ICO.wand} 排版</button>
-          <button className="btn" onClick={randomColor} style={{padding:"6px 10px",fontSize:9,fontWeight:600,letterSpacing:2}} title="隨機配色">{ICO.dice} RANDOM</button>
-          <div style={{width:1,height:24,background:"#1e1e2a"}}/>
+          <button className="btn" onClick={randomColor} style={{padding:"6px 10px",fontSize:9,fontWeight:600,letterSpacing:isMobile?0:2}} title="隨機配色">{ICO.dice}{!isMobile&&" RANDOM"}</button>
+          {!isMobile&&<div style={{width:1,height:24,background:"#1e1e2a"}}/>}
           <div style={{display:"flex",border:"1px solid #2a2a3a",borderRadius:6,overflow:"hidden"}} title="匯出格式">
             {["png","jpg"].map(f=>(
               <button key={f} onClick={()=>setExportFmt(f)} style={{padding:"6px 9px",border:"none",background:exportFmt===f?"#1e1e2a":"transparent",color:exportFmt===f?"#d0d0e0":"#5a5a78",fontSize:9,fontWeight:700,letterSpacing:1,cursor:"pointer",fontFamily:"'Space Mono',monospace"}}>{f.toUpperCase()}</button>
@@ -1453,12 +1506,13 @@ function App(){
       </div>
 
       {/* ═══ MAIN CONTENT ═══ */}
-      <div style={{flex:1,display:"flex",overflow:"hidden"}}>
+      <div style={{flex:1,display:"flex",overflow:"hidden",flexDirection:isMobile?"column":"row"}}>
 
-        {/* ── LEFT: Preview + Page Strip ── */}
-        <div style={{flex:1,display:"flex",flexDirection:"column",background:"#0a0a10",borderRight:"1px solid #1a1a24"}}>
-          {/* Page strip */}
-          <div style={{padding:"12px 16px",borderBottom:"1px solid #16161e",display:"flex",alignItems:"center",gap:8,flexShrink:0,position:"relative",zIndex:10,flexWrap:"nowrap"}}>
+        {/* ── LEFT/TOP: Preview + Page Strip ── */}
+        <div style={{flex:1,minHeight:0,display:"flex",flexDirection:"column",background:"#0a0a10",borderRight:isMobile?"none":"1px solid #1a1a24"}}>
+          {/* Page strip — thumbs scroll horizontally; add-button + actions stay pinned */}
+          <div style={{padding:isMobile?"8px 10px":"12px 16px",borderBottom:"1px solid #16161e",display:"flex",alignItems:"center",gap:8,flexShrink:0,position:"relative",zIndex:10,flexWrap:"nowrap"}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,overflowX:"auto",minWidth:0,flexShrink:1}}>
             {pages.map((pg,i)=>(
               <div key={pg.id} className={`page-thumb${i===curIdx?" active":""}`} onClick={()=>switchPage(i)}
                 draggable
@@ -1475,6 +1529,7 @@ function App(){
                 <div style={{position:"absolute",bottom:3,right:3,fontSize:7,color:"rgba(255,255,255,0.5)",fontFamily:"'Space Mono',monospace",textShadow:"0 1px 2px rgba(0,0,0,0.8)",lineHeight:1}}>{i+1}</div>
               </div>
             ))}
+            </div>
             {/* Add page button */}
             <div ref={addBtnRef} style={{position:"relative",flexShrink:0}}>
               <button className="btn" onClick={()=>setShowAddMenu(!showAddMenu)}
@@ -1504,7 +1559,7 @@ function App(){
           </div>
 
           {/* Preview area */}
-          <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",padding:24,position:"relative"}}>
+          <div style={{flex:1,minHeight:0,display:"flex",alignItems:"center",justifyContent:"center",padding:isMobile?10:24,position:"relative"}}>
             <div style={{borderRadius:4,overflow:"hidden",boxShadow:"0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04)",position:"relative"}}>
               <Preview size={actualPreviewW} aspectRatio={ratio} interactive={true} showPageIndicator={true} pageIndex={curIdx}/>
               {showGuide&&<div style={{position:"absolute",inset:0,pointerEvents:"none",zIndex:5}}>
@@ -1520,19 +1575,28 @@ function App(){
           </div>
         </div>
 
-        {/* ── RIGHT: Editor Panel ── */}
-        <div style={{width:380,flexShrink:0,display:"flex",flexDirection:"column",background:"#0e0e16"}}>
-          {/* Tabs */}
-          <div style={{display:"flex",borderBottom:"1px solid #1a1a24",flexShrink:0}}>
+        {/* ── RIGHT (desktop) / BOTTOM SHEET (mobile): Editor Panel ── */}
+        <div style={isMobile
+          ?{width:"100%",flexShrink:0,display:"flex",flexDirection:"column",background:"#0e0e16",height:sheetOpen?sheetH:46,borderTop:"1px solid #1a1a24",transition:"height .22s ease",overflow:"hidden"}
+          :{width:Math.min(380,Math.max(300,vp.w*0.32)),flexShrink:0,display:"flex",flexDirection:"column",background:"#0e0e16"}}>
+          {/* Tabs — on mobile, tapping the active tab collapses the sheet */}
+          <div style={{display:"flex",borderBottom:"1px solid #1a1a24",flexShrink:0,alignItems:"stretch"}}>
             {tabs.map(t=>(
-              <button key={t.id} className={`tab-btn${tab===t.id?" active":""}`} onClick={()=>setTab(t.id)}>
+              <button key={t.id} className={`tab-btn${tab===t.id&&(!isMobile||sheetOpen)?" active":""}`}
+                onClick={()=>{
+                  if(isMobile&&sheetOpen&&tab===t.id){setSheetOpen(false);return;}
+                  setTab(t.id);setSheetOpen(true);
+                }}>
                 <span style={{opacity:tab===t.id?0.9:0.4}}>{t.ico}</span>{t.label}
               </button>
             ))}
+            {isMobile&&<button className="tab-btn" onClick={()=>setSheetOpen(!sheetOpen)} title={sheetOpen?"收合面板":"展開面板"} style={{flex:"0 0 44px"}}>
+              <span style={{display:"inline-block",transform:sheetOpen?"rotate(90deg)":"rotate(-90deg)",transition:"transform .2s",fontSize:14}}>&#8250;</span>
+            </button>}
           </div>
 
           {/* Panel content */}
-          <div style={{flex:1,overflowY:"auto",padding:20,animation:"fi 0.15s ease"}} key={tab+curIdx}>
+          <div style={{flex:1,overflowY:"auto",padding:isMobile?"14px 14px 28px":20,animation:"fi 0.15s ease",WebkitOverflowScrolling:"touch"}} key={tab+curIdx}>
 
             {/* ═══ PRESETS ═══ */}
             {tab==="presets"&&<div>
@@ -1691,6 +1755,11 @@ function App(){
             {/* ═══ STYLE ═══ */}
             {tab==="style"&&<div>
               <Sec>字型</Sec>
+              <div style={{display:"flex",gap:5,marginBottom:10}}>
+                {[{v:"both",l:"標題+內文"},{v:"head",l:"僅標題"},{v:"body",l:"僅內文"}].map(x=>(
+                  <button key={x.v} className={`btn${fontTarget===x.v?" active":""}`} onClick={()=>setFontTarget(x.v)} style={{flex:1,padding:"7px 0",fontSize:10,fontWeight:600}}>{x.l}</button>
+                ))}
+              </div>
               <div style={{marginBottom:20}}>
                 {Object.entries(FONT_CATS).map(([cat,fonts])=>(
                   <div key={cat}>
@@ -1699,11 +1768,16 @@ function App(){
                       <span style={{color:"#404066",transform:openCat===cat?"rotate(90deg)":"none",transition:"transform 0.2s",fontSize:14}}>&#8250;</span>
                     </button>
                     {openCat===cat&&<div style={{padding:"6px 0",display:"flex",flexDirection:"column",gap:2,animation:"fi 0.15s ease"}}>
-                      {fonts.map(f=>(
-                        <button key={f} onClick={()=>setMulti({fontHead:f,fontBody:f})} style={{background:P.fontHead===f?"#1a1a28":"transparent",border:"none",borderRadius:6,color:P.fontHead===f?"#d0d0e0":"#7070a0",padding:"10px 12px",fontSize:15,fontFamily:`"${f}",sans-serif`,cursor:"pointer",textAlign:"left",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .15s"}}>
-                          <span>{f}</span>{P.fontHead===f&&<span style={{color:"#7070a0"}}>{ICO.chk}</span>}
+                      {fonts.map(f=>{
+                        const sel=(fontTarget==="body"?P.fontBody:P.fontHead)===f;
+                        return(
+                        <button key={f} onClick={()=>{
+                          if(fontTarget==="both")setMulti({fontHead:f,fontBody:f});
+                          else set(fontTarget==="head"?"fontHead":"fontBody",f);
+                        }} style={{background:sel?"#1a1a28":"transparent",border:"none",borderRadius:6,color:sel?"#d0d0e0":"#7070a0",padding:"10px 12px",fontSize:15,fontFamily:`"${f}",sans-serif`,cursor:"pointer",textAlign:"left",display:"flex",justifyContent:"space-between",alignItems:"center",transition:"all .15s"}}>
+                          <span>{f}</span>{sel&&<span style={{color:"#7070a0"}}>{ICO.chk}</span>}
                         </button>
-                      ))}
+                      );})}
                     </div>}
                   </div>
                 ))}
@@ -1719,6 +1793,15 @@ function App(){
               {P.pageType==="cta"&&<Sld label="標籤字級" value={P.topSize} min={8} max={28} step={1} onChange={e=>set("topSize",+e.target.value)} sfx="px"/>}
               {["img-top","text-top","side-lr","side-rl","list"].includes(P.pageType)&&<Sld label="內文字級" value={P.bodySize||15} min={10} max={28} step={1} onChange={e=>set("bodySize",+e.target.value)} sfx="px"/>}
               <Sld label="行距" value={P.lineHScale||1} min={0.8} max={1.6} step={0.1} onChange={e=>set("lineHScale",+e.target.value)} sfx="x"/>
+
+              {["img-top","text-top","side-lr","side-rl"].includes(P.pageType)&&<>
+                <div style={{marginTop:8}}><Sec>文字對齊</Sec></div>
+                <div style={{display:"flex",gap:6,marginBottom:16}}>
+                  {[{v:"left",l:"靠左"},{v:"center",l:"置中"}].map(x=>(
+                    <button key={x.v} className={`btn${(P.textAlign||"left")===x.v?" active":""}`} onClick={()=>set("textAlign",x.v)} style={{flex:1,padding:"9px 0",fontSize:11,fontWeight:600,letterSpacing:2}}>{x.l}</button>
+                  ))}
+                </div>
+              </>}
 
               <div style={{marginTop:8}}><Sec>強調色</Sec></div>
               <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:16}}>
@@ -1749,8 +1832,9 @@ function App(){
                   ))}
                 </div>
               </>}
-              {pages.length>1&&<div style={{marginTop:20}}>
+              {pages.length>1&&<div style={{marginTop:20,display:"flex",flexDirection:"column",gap:8}}>
                 <button className="btn" onClick={styleAllPages} style={{width:"100%",padding:"11px",fontSize:11,fontWeight:600,letterSpacing:1}} title="把本頁的配色、字型與行距套用到整份輪播">{ICO.wand} 樣式套用到全部頁面</button>
+                <button className="btn" onClick={tagAllPages} style={{width:"100%",padding:"11px",fontSize:11,fontWeight:600,letterSpacing:1}} title="把本頁的底部帳號標記（@handle）套用到整份輪播；封面 / 金句 / 結尾頁會顯示">{P.bottomTag?"帳號標記「"+P.bottomTag+"」套用到全部":"清除全部頁面的帳號標記"}</button>
               </div>}
             </div>}
 

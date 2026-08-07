@@ -728,6 +728,123 @@ const CAROUSEL_KITS = [{
     fontBody: "Noto Serif TC",
     headSize: 30
   }]
+}, {
+  id: "kit-product",
+  label: "產品開箱",
+  desc: "封面 → 兩頁特色 → 重點規格 → 結尾",
+  pages: [{
+    pageType: "cover",
+    topLabel: "開箱實測",
+    bigNumber: "",
+    headline: "這個{hl}小工具{/hl}\n讓我效率翻倍",
+    subtitle: "用了三個月的真實心得",
+    layout: "center",
+    decoStyle: "corners",
+    accent: "#e07a5f",
+    bgColor: "#fafaf5",
+    textColor: "#2c2c2c",
+    headSize: 38,
+    bottomTag: "@your_handle"
+  }, {
+    pageType: "side-lr",
+    headline: "特色 {hl}01{/hl}",
+    bodyText: "第一個亮點的說明，\n左邊放產品照片。",
+    accent: "#e07a5f",
+    bgColor: "#fafaf5",
+    textColor: "#2c2c2c",
+    imgColor: "#ece5da",
+    headSize: 24,
+    bodySize: 14
+  }, {
+    pageType: "side-rl",
+    headline: "特色 {hl}02{/hl}",
+    bodyText: "第二個亮點的說明，\n右邊放使用情境圖。",
+    accent: "#e07a5f",
+    bgColor: "#fafaf5",
+    textColor: "#2c2c2c",
+    imgColor: "#ece5da",
+    headSize: 24,
+    bodySize: 14
+  }, {
+    pageType: "list",
+    headline: "重點{hl}總整理{/hl}",
+    listItems: ["優點一：寫在這裡", "優點二：寫在這裡", "小缺點：誠實說一個", "適合誰：一句話總結"],
+    listStyle: "number",
+    accent: "#e07a5f",
+    bgColor: "#fafaf5",
+    textColor: "#2c2c2c",
+    headSize: 26,
+    bodySize: 15
+  }, {
+    pageType: "cta",
+    topLabel: "想看更多開箱？",
+    headline: "追蹤我\n不錯過{hl}下一篇{/hl}",
+    listItems: ["追蹤 ➕", "收藏 🔖", "分享 ➤"],
+    bottomTag: "@your_handle",
+    accent: "#e07a5f",
+    bgColor: "#fafaf5",
+    textColor: "#2c2c2c",
+    headSize: 32
+  }]
+}, {
+  id: "kit-mistakes",
+  label: "常見錯誤",
+  desc: "封面 → 三個錯誤 → 結尾",
+  pages: [{
+    pageType: "cover",
+    topLabel: "你中了幾個？",
+    bigNumber: "3",
+    headline: "個新手最常犯的\n{hl}排版錯誤{/hl}",
+    subtitle: "最後一個 90% 的人都會踩",
+    layout: "number-left",
+    decoStyle: "line",
+    accent: "#ff6b6b",
+    bgColor: "#0d0d14",
+    textColor: "#e8e8f0",
+    headSize: 32,
+    numSize: 110,
+    bottomTag: "SWIPE →"
+  }, {
+    pageType: "img-top",
+    headline: "錯誤 {hl}01{/hl}",
+    bodyText: "說明第一個常見錯誤，\n再給一句正確做法。",
+    accent: "#ff6b6b",
+    bgColor: "#0d0d14",
+    textColor: "#e8e8f0",
+    imgColor: "#181828",
+    headSize: 28,
+    bodySize: 15
+  }, {
+    pageType: "img-top",
+    headline: "錯誤 {hl}02{/hl}",
+    bodyText: "說明第二個常見錯誤，\n附上對比示意圖更有感。",
+    accent: "#ff6b6b",
+    bgColor: "#0d0d14",
+    textColor: "#e8e8f0",
+    imgColor: "#181828",
+    headSize: 28,
+    bodySize: 15
+  }, {
+    pageType: "img-top",
+    headline: "錯誤 {hl}03{/hl}",
+    bodyText: "壓軸的錯誤放最後，\n讓讀者忍不住分享。",
+    accent: "#ff6b6b",
+    bgColor: "#0d0d14",
+    textColor: "#e8e8f0",
+    imgColor: "#181828",
+    headSize: 28,
+    bodySize: 15
+  }, {
+    pageType: "cta",
+    topLabel: "看完快檢查一次",
+    headline: "轉發給\n{hl}還在踩雷{/hl}的朋友",
+    listItems: ["收藏 🔖", "分享 ➤"],
+    bottomTag: "@your_handle",
+    accent: "#ff6b6b",
+    bgColor: "#0d0d14",
+    textColor: "#e8e8f0",
+    headSize: 32
+  }]
 }];
 function makePage(type = "cover", base = {}) {
   const defaults = {
@@ -752,6 +869,7 @@ function makePage(type = "cover", base = {}) {
     bodySize: 15,
     imgColor: "#222230",
     imgData: null,
+    textAlign: "left",
     bgImage: null,
     bgOverlay: 0.35,
     lineHScale: 1,
@@ -1560,6 +1678,38 @@ const Sld = ({
   }
 }));
 
+/* Viewport hook — re-renders on resize so preview sizing + mobile layout stay correct.
+   A slow interval self-corrects cases where no resize event fires (e.g. embedded
+   webviews that lay out while hidden); the equality guard makes those ticks free. */
+const useViewport = () => {
+  const [vp, setVp] = useState({
+    w: window.innerWidth || 1280,
+    h: window.innerHeight || 800
+  });
+  useEffect(() => {
+    const sync = () => {
+      const w = window.innerWidth || 1280,
+        h = window.innerHeight || 800;
+      setVp(p => p.w === w && p.h === h ? p : {
+        w,
+        h
+      });
+    };
+    window.addEventListener("resize", sync);
+    window.addEventListener("orientationchange", sync);
+    document.addEventListener("visibilitychange", sync);
+    const iv = setInterval(sync, 1000);
+    sync();
+    return () => {
+      window.removeEventListener("resize", sync);
+      window.removeEventListener("orientationchange", sync);
+      document.removeEventListener("visibilitychange", sync);
+      clearInterval(iv);
+    };
+  }, []);
+  return vp;
+};
+
 /* IME-safe input hook */
 const useIMEInput = (value, onChange) => {
   const [local, setLocal] = useState(value);
@@ -1653,6 +1803,10 @@ function App() {
   const [showGuide, setShowGuide] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [kitArm, setKitArm] = useState(null);
+  const vp = useViewport();
+  const isMobile = vp.w < 820;
+  const [sheetOpen, setSheetOpen] = useState(true);
+  const [fontTarget, setFontTarget] = useState("both");
   const fileRef = useRef(null);
   const addBtnRef = useRef(null);
   const projFileRef = useRef(null);
@@ -1949,6 +2103,22 @@ function App() {
     setCurrentPage(styled[curIdx]);
     pushHistoryNow(styled);
     showToast("已將本頁樣式套用到全部 " + styled.length + " 頁");
+  };
+
+  /* ── apply this page's bottom tag (@handle) to every page that shows one ── */
+  const tagAllPages = () => {
+    const flushed = [...pages];
+    flushed[curIdx] = {
+      ...P
+    };
+    const tagged = flushed.map(pg => ({
+      ...pg,
+      bottomTag: P.bottomTag || ""
+    }));
+    setPages(tagged);
+    setCurrentPage(tagged[curIdx]);
+    pushHistoryNow(tagged);
+    showToast((P.bottomTag ? "已將「" + P.bottomTag + "」套用到全部 " : "已清除全部頁面的帳號標記，共 ") + tagged.length + " 頁");
   };
 
   /* ── drag-and-drop page reorder ── */
@@ -2491,7 +2661,8 @@ function App() {
           flexDirection: "column",
           justifyContent: "center",
           minWidth: 0,
-          overflow: "hidden"
+          overflow: "hidden",
+          textAlign: p.textAlign === "center" ? "center" : "left"
         }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
@@ -2551,7 +2722,8 @@ function App() {
           flexDirection: "column",
           justifyContent: "center",
           minWidth: 0,
-          overflow: "hidden"
+          overflow: "hidden",
+          textAlign: p.textAlign === "center" ? "center" : "left"
         }
       }, /*#__PURE__*/React.createElement("div", {
         style: {
@@ -3167,17 +3339,19 @@ function App() {
     // vertical center
     const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 * LH : 0);
     let curY = textTop + Math.max(0, (txtH - totalH) / 2);
+    const alignC = p.textAlign === "center";
+    const ax = alignC ? W / 2 : padH;
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     headLines.forEach(line => {
-      drawHLLine(ctx, p, line, padH, curY, "left", effHead, p.fontHead, 700);
+      drawHLLine(ctx, p, line, ax, curY, alignC ? "center" : "left", effHead, p.fontHead, 700);
       curY += effHead * 1.4 * LH;
     });
     if (p.bodyText) {
       curY += 8 * S;
       ctx.globalAlpha = 0.7;
       bodyRes.lines.forEach(l => {
-        drawHLLine(ctx, p, l, padH, curY, "left", bodyRes.fontSize, p.fontBody, 400);
+        drawHLLine(ctx, p, l, ax, curY, alignC ? "center" : "left", bodyRes.fontSize, p.fontBody, 400);
         curY += bodyRes.fontSize * 1.7 * LH;
       });
       ctx.globalAlpha = 1;
@@ -3202,17 +3376,19 @@ function App() {
     const bodyRes = fitAndWrap(p.bodyText, txtW, Math.max(0, txtH - headH), baseBody, 1.7 * LH, p.fontBody, "400", Math.max(10, 10 * S));
     const totalH = headH + (p.bodyText ? bodyRes.lines.length * bodyRes.fontSize * 1.7 * LH : 0);
     let curY = pad + Math.max(0, (txtH - totalH) / 2);
+    const alignC = p.textAlign === "center";
+    const ax = alignC ? textX + pad + txtW / 2 : textX + pad;
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     headLines.forEach(line => {
-      drawHLLine(ctx, p, line, textX + pad, curY, "left", effHead, p.fontHead, 700);
+      drawHLLine(ctx, p, line, ax, curY, alignC ? "center" : "left", effHead, p.fontHead, 700);
       curY += effHead * 1.4 * LH;
     });
     if (p.bodyText) {
       curY += 8 * S;
       ctx.globalAlpha = 0.7;
       bodyRes.lines.forEach(l => {
-        drawHLLine(ctx, p, l, textX + pad, curY, "left", bodyRes.fontSize, p.fontBody, 400);
+        drawHLLine(ctx, p, l, ax, curY, alignC ? "center" : "left", bodyRes.fontSize, p.fontBody, 400);
         curY += bodyRes.fontSize * 1.7 * LH;
       });
       ctx.globalAlpha = 1;
@@ -3450,6 +3626,7 @@ function App() {
           setTimeout(() => setCopied(false), 2000);
         } catch (e) {
           console.error(e);
+          showToast("此瀏覽器不支援複製圖片，請改用 EXPORT 下載");
         }
       }, "image/png");
     } else {
@@ -3536,14 +3713,16 @@ function App() {
   };
 
   /* ══════════ MAIN LAYOUT ══════════ */
-  /* Desktop: left=preview, right=editor. Fluid. */
-  const previewMaxH = window.innerHeight - 120;
-  const previewMaxW = Math.min(500, window.innerWidth * 0.45);
+  /* Desktop: left=preview, right=editor. Mobile: preview on top, editor sheet below. */
+  const sheetH = Math.round(vp.h * 0.44);
+  const previewMaxH = isMobile ? Math.max(160, vp.h - (sheetOpen ? sheetH : 46) - 176) // top bar (2 rows) + strip + paddings
+  : vp.h - 120;
+  const previewMaxW = isMobile ? vp.w - 28 : Math.min(500, vp.w * 0.45);
   const idealH = previewMaxW * (ratio.h / ratio.w);
   const actualPreviewW = idealH > previewMaxH ? previewMaxW * (previewMaxH / idealH) : previewMaxW;
   return /*#__PURE__*/React.createElement("div", {
     style: {
-      height: "100vh",
+      height: vp.h,
       display: "flex",
       flexDirection: "column",
       background: "#0c0c12"
@@ -3574,10 +3753,12 @@ function App() {
     onChange: handleBgUpload
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      padding: "8px 20px",
+      padding: isMobile ? "6px 10px" : "8px 20px",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
+      flexWrap: "wrap",
+      rowGap: 6,
       borderBottom: "1px solid #1a1a24",
       background: "#0e0e16",
       flexShrink: 0
@@ -3586,17 +3767,19 @@ function App() {
     style: {
       display: "flex",
       alignItems: "center",
-      gap: 16
+      gap: isMobile ? 8 : 16,
+      flexWrap: "wrap",
+      rowGap: 6
     }
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 13,
       fontWeight: 700,
-      letterSpacing: 6,
+      letterSpacing: isMobile ? 3 : 6,
       fontFamily: "'Space Mono',monospace",
       color: "#d0d0e0"
     }
-  }, "TYPO STUDIO"), /*#__PURE__*/React.createElement("div", {
+  }, "TYPO STUDIO"), !isMobile && /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 8,
       color: "#4a4a68",
@@ -3604,7 +3787,7 @@ function App() {
       marginTop: 1,
       fontFamily: "'Space Mono',monospace"
     }
-  }, "IG CAROUSEL COMPOSER")), /*#__PURE__*/React.createElement("div", {
+  }, "IG CAROUSEL COMPOSER")), !isMobile && /*#__PURE__*/React.createElement("div", {
     style: {
       width: 1,
       height: 24,
@@ -3629,7 +3812,7 @@ function App() {
       padding: "6px 8px"
     },
     title: "\u91CD\u505A Ctrl+Y"
-  }, ICO.redo)), /*#__PURE__*/React.createElement("div", {
+  }, ICO.redo)), !isMobile && /*#__PURE__*/React.createElement("div", {
     style: {
       width: 1,
       height: 24,
@@ -3664,7 +3847,9 @@ function App() {
     style: {
       display: "flex",
       gap: 6,
-      alignItems: "center"
+      alignItems: "center",
+      flexWrap: "wrap",
+      rowGap: 6
     }
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn",
@@ -3689,7 +3874,7 @@ function App() {
       padding: "6px 8px"
     },
     title: "\u532F\u5165\u5C08\u6848 JSON"
-  }, ICO.folder), /*#__PURE__*/React.createElement("div", {
+  }, ICO.folder), !isMobile && /*#__PURE__*/React.createElement("div", {
     style: {
       width: 1,
       height: 24,
@@ -3712,10 +3897,10 @@ function App() {
       padding: "6px 10px",
       fontSize: 9,
       fontWeight: 600,
-      letterSpacing: 2
+      letterSpacing: isMobile ? 0 : 2
     },
     title: "\u96A8\u6A5F\u914D\u8272"
-  }, ICO.dice, " RANDOM"), /*#__PURE__*/React.createElement("div", {
+  }, ICO.dice, !isMobile && " RANDOM"), !isMobile && /*#__PURE__*/React.createElement("div", {
     style: {
       width: 1,
       height: 24,
@@ -3774,19 +3959,21 @@ function App() {
     style: {
       flex: 1,
       display: "flex",
-      overflow: "hidden"
+      overflow: "hidden",
+      flexDirection: isMobile ? "column" : "row"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
+      minHeight: 0,
       display: "flex",
       flexDirection: "column",
       background: "#0a0a10",
-      borderRight: "1px solid #1a1a24"
+      borderRight: isMobile ? "none" : "1px solid #1a1a24"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      padding: "12px 16px",
+      padding: isMobile ? "8px 10px" : "12px 16px",
       borderBottom: "1px solid #16161e",
       display: "flex",
       alignItems: "center",
@@ -3795,6 +3982,15 @@ function App() {
       position: "relative",
       zIndex: 10,
       flexWrap: "nowrap"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 8,
+      overflowX: "auto",
+      minWidth: 0,
+      flexShrink: 1
     }
   }, pages.map((pg, i) => /*#__PURE__*/React.createElement("div", {
     key: pg.id,
@@ -3852,7 +4048,7 @@ function App() {
       textShadow: "0 1px 2px rgba(0,0,0,0.8)",
       lineHeight: 1
     }
-  }, i + 1))), /*#__PURE__*/React.createElement("div", {
+  }, i + 1)))), /*#__PURE__*/React.createElement("div", {
     ref: addBtnRef,
     style: {
       position: "relative",
@@ -3942,10 +4138,11 @@ function App() {
   }, ICO.trash))), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
+      minHeight: 0,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      padding: 24,
+      padding: isMobile ? 10 : 24,
       position: "relative"
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -4015,8 +4212,18 @@ function App() {
       letterSpacing: 2
     }
   }, ratio.px, " / P", curIdx + 1, " of ", totalPages))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 380,
+    style: isMobile ? {
+      width: "100%",
+      flexShrink: 0,
+      display: "flex",
+      flexDirection: "column",
+      background: "#0e0e16",
+      height: sheetOpen ? sheetH : 46,
+      borderTop: "1px solid #1a1a24",
+      transition: "height .22s ease",
+      overflow: "hidden"
+    } : {
+      width: Math.min(380, Math.max(300, vp.w * 0.32)),
       flexShrink: 0,
       display: "flex",
       flexDirection: "column",
@@ -4026,22 +4233,45 @@ function App() {
     style: {
       display: "flex",
       borderBottom: "1px solid #1a1a24",
-      flexShrink: 0
+      flexShrink: 0,
+      alignItems: "stretch"
     }
   }, tabs.map(t => /*#__PURE__*/React.createElement("button", {
     key: t.id,
-    className: `tab-btn${tab === t.id ? " active" : ""}`,
-    onClick: () => setTab(t.id)
+    className: `tab-btn${tab === t.id && (!isMobile || sheetOpen) ? " active" : ""}`,
+    onClick: () => {
+      if (isMobile && sheetOpen && tab === t.id) {
+        setSheetOpen(false);
+        return;
+      }
+      setTab(t.id);
+      setSheetOpen(true);
+    }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       opacity: tab === t.id ? 0.9 : 0.4
     }
-  }, t.ico), t.label))), /*#__PURE__*/React.createElement("div", {
+  }, t.ico), t.label)), isMobile && /*#__PURE__*/React.createElement("button", {
+    className: "tab-btn",
+    onClick: () => setSheetOpen(!sheetOpen),
+    title: sheetOpen ? "收合面板" : "展開面板",
+    style: {
+      flex: "0 0 44px"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      display: "inline-block",
+      transform: sheetOpen ? "rotate(90deg)" : "rotate(-90deg)",
+      transition: "transform .2s",
+      fontSize: 14
+    }
+  }, "\u203A"))), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
       overflowY: "auto",
-      padding: 20,
-      animation: "fi 0.15s ease"
+      padding: isMobile ? "14px 14px 28px" : 20,
+      animation: "fi 0.15s ease",
+      WebkitOverflowScrolling: "touch"
     },
     key: tab + curIdx
   }, tab === "presets" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u4E00\u9375\u6574\u7D44\u8F2A\u64AD"), /*#__PURE__*/React.createElement("div", {
@@ -4539,6 +4769,31 @@ function App() {
     }
   }, P.showPageNum ? "顯示頁碼 (" + String(curIdx + 1) + "/" + totalPages + ")" : "不顯示頁碼")), tab === "style" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u5B57\u578B"), /*#__PURE__*/React.createElement("div", {
     style: {
+      display: "flex",
+      gap: 5,
+      marginBottom: 10
+    }
+  }, [{
+    v: "both",
+    l: "標題+內文"
+  }, {
+    v: "head",
+    l: "僅標題"
+  }, {
+    v: "body",
+    l: "僅內文"
+  }].map(x => /*#__PURE__*/React.createElement("button", {
+    key: x.v,
+    className: `btn${fontTarget === x.v ? " active" : ""}`,
+    onClick: () => setFontTarget(x.v),
+    style: {
+      flex: 1,
+      padding: "7px 0",
+      fontSize: 10,
+      fontWeight: 600
+    }
+  }, x.l))), /*#__PURE__*/React.createElement("div", {
+    style: {
       marginBottom: 20
     }
   }, Object.entries(FONT_CATS).map(([cat, fonts]) => /*#__PURE__*/React.createElement("div", {
@@ -4575,32 +4830,37 @@ function App() {
       gap: 2,
       animation: "fi 0.15s ease"
     }
-  }, fonts.map(f => /*#__PURE__*/React.createElement("button", {
-    key: f,
-    onClick: () => setMulti({
-      fontHead: f,
-      fontBody: f
-    }),
-    style: {
-      background: P.fontHead === f ? "#1a1a28" : "transparent",
-      border: "none",
-      borderRadius: 6,
-      color: P.fontHead === f ? "#d0d0e0" : "#7070a0",
-      padding: "10px 12px",
-      fontSize: 15,
-      fontFamily: `"${f}",sans-serif`,
-      cursor: "pointer",
-      textAlign: "left",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      transition: "all .15s"
-    }
-  }, /*#__PURE__*/React.createElement("span", null, f), P.fontHead === f && /*#__PURE__*/React.createElement("span", {
-    style: {
-      color: "#7070a0"
-    }
-  }, ICO.chk))))))), /*#__PURE__*/React.createElement(Sec, null, "\u5B57\u7D1A"), /*#__PURE__*/React.createElement(Sld, {
+  }, fonts.map(f => {
+    const sel = (fontTarget === "body" ? P.fontBody : P.fontHead) === f;
+    return /*#__PURE__*/React.createElement("button", {
+      key: f,
+      onClick: () => {
+        if (fontTarget === "both") setMulti({
+          fontHead: f,
+          fontBody: f
+        });else set(fontTarget === "head" ? "fontHead" : "fontBody", f);
+      },
+      style: {
+        background: sel ? "#1a1a28" : "transparent",
+        border: "none",
+        borderRadius: 6,
+        color: sel ? "#d0d0e0" : "#7070a0",
+        padding: "10px 12px",
+        fontSize: 15,
+        fontFamily: `"${f}",sans-serif`,
+        cursor: "pointer",
+        textAlign: "left",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        transition: "all .15s"
+      }
+    }, /*#__PURE__*/React.createElement("span", null, f), sel && /*#__PURE__*/React.createElement("span", {
+      style: {
+        color: "#7070a0"
+      }
+    }, ICO.chk));
+  }))))), /*#__PURE__*/React.createElement(Sec, null, "\u5B57\u7D1A"), /*#__PURE__*/React.createElement(Sld, {
     label: "\u6A19\u984C\u5B57\u7D1A",
     value: P.headSize,
     min: 14,
@@ -4664,7 +4924,34 @@ function App() {
     step: 0.1,
     onChange: e => set("lineHScale", +e.target.value),
     sfx: "x"
-  }), /*#__PURE__*/React.createElement("div", {
+  }), ["img-top", "text-top", "side-lr", "side-rl"].includes(P.pageType) && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 8
+    }
+  }, /*#__PURE__*/React.createElement(Sec, null, "\u6587\u5B57\u5C0D\u9F4A")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      marginBottom: 16
+    }
+  }, [{
+    v: "left",
+    l: "靠左"
+  }, {
+    v: "center",
+    l: "置中"
+  }].map(x => /*#__PURE__*/React.createElement("button", {
+    key: x.v,
+    className: `btn${(P.textAlign || "left") === x.v ? " active" : ""}`,
+    onClick: () => set("textAlign", x.v),
+    style: {
+      flex: 1,
+      padding: "9px 0",
+      fontSize: 11,
+      fontWeight: 600,
+      letterSpacing: 2
+    }
+  }, x.l)))), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: 8
     }
@@ -4781,7 +5068,10 @@ function App() {
     }
   }, d.l)))), pages.length > 1 && /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 20
+      marginTop: 20,
+      display: "flex",
+      flexDirection: "column",
+      gap: 8
     }
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn",
@@ -4794,7 +5084,18 @@ function App() {
       letterSpacing: 1
     },
     title: "\u628A\u672C\u9801\u7684\u914D\u8272\u3001\u5B57\u578B\u8207\u884C\u8DDD\u5957\u7528\u5230\u6574\u4EFD\u8F2A\u64AD"
-  }, ICO.wand, " \u6A23\u5F0F\u5957\u7528\u5230\u5168\u90E8\u9801\u9762"))), tab === "bg" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u80CC\u666F\u8272"), /*#__PURE__*/React.createElement("div", {
+  }, ICO.wand, " \u6A23\u5F0F\u5957\u7528\u5230\u5168\u90E8\u9801\u9762"), /*#__PURE__*/React.createElement("button", {
+    className: "btn",
+    onClick: tagAllPages,
+    style: {
+      width: "100%",
+      padding: "11px",
+      fontSize: 11,
+      fontWeight: 600,
+      letterSpacing: 1
+    },
+    title: "\u628A\u672C\u9801\u7684\u5E95\u90E8\u5E33\u865F\u6A19\u8A18\uFF08@handle\uFF09\u5957\u7528\u5230\u6574\u4EFD\u8F2A\u64AD\uFF1B\u5C01\u9762 / \u91D1\u53E5 / \u7D50\u5C3E\u9801\u6703\u986F\u793A"
+  }, P.bottomTag ? "帳號標記「" + P.bottomTag + "」套用到全部" : "清除全部頁面的帳號標記"))), tab === "bg" && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Sec, null, "\u80CC\u666F\u8272"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "grid",
       gridTemplateColumns: "repeat(4,1fr)",
