@@ -1,5 +1,21 @@
 # TYPO STUDIO
 
+<!-- freedom-repository-guide:start -->
+## 在自由工坊的位置
+
+[自由工坊](https://freetwai.com) 讓會員先完成定位、選擇公會並領取 Repo 技能書，再以供貨、商店、開源作品、行銷與小隊共同完成成果。
+
+行銷公會的中文輪播貼文排版與圖像輸出工具來源。 保留上游離線 editor、PWA／Electron shell、排版及匯出程式。
+
+工坊 fork 尚未發布自己的桌面／PWA 版本，也沒有中央會員同步或代發社群貼文。
+
+工坊 Fork：上游產品／授權來源為 [Hao0321/typo-studio](https://github.com/Hao0321/typo-studio)；本次協作的 Issue／PR 送到 **FreeTWAI-AI/typo-studio**，不是自動送往上游。
+
+程式／內容入口：[index.html](index.html)、[vendor/app.jsx](vendor/app.jsx)、[main.js](main.js)、[preload.js](preload.js)、[sw.js](sw.js)。協作先讀 [CONTRIBUTING.md](CONTRIBUTING.md)，讓 Agent 讀 [AGENTS.md](AGENTS.md)；從[本倉 Issues](https://github.com/FreeTWAI-AI/typo-studio/issues)認領、[查看既有 PR](https://github.com/FreeTWAI-AI/typo-studio/pulls)避免重工。
+
+貼文素材與專案留在使用者裝置；匯出圖片不等於平台已發布。修改 JSX 時同步核對既有編譯流程，保留字型／圖像授權與上游來源。 跨 repo 的協定由[中央平台](https://github.com/FreeTWAI-AI/freedom-platform)維護。
+<!-- freedom-repository-guide:end -->
+
 > 中文友善的 Instagram 輪播貼文排版工具 — 桌面版（Windows / macOS）＋ 網頁版 / 手機版（PWA）
 
 TYPO STUDIO 是一個離線、免帳號、所見即所得的 IG 貼文產生器。專為中文內容創作者設計：一套**自動排版引擎**幫你處理字級、斷行、避頭尾與對比度，讓你專注在文字本身，匯出即是 1080px 的高解析 PNG / JPG。
