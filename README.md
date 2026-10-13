@@ -9,11 +9,11 @@
 
 工坊 fork 尚未發布自己的桌面／PWA 版本，也沒有中央會員同步或代發社群貼文。
 
-工坊 Fork：上游產品／授權來源為 [Hao0321/typo-studio](https://github.com/Hao0321/typo-studio)；本次協作的 Issue／PR 送到 **FreeTWAI-AI/typo-studio**，不是自動送往上游。
+工坊 Fork：上游產品／授權來源為 [Hao0321/typo-studio](https://github.com/Hao0321/typo-studio)；本次協作的 Issue／PR 送到 **FreeTWAI/typo-studio**，不是自動送往上游。
 
-程式／內容入口：[index.html](index.html)、[vendor/app.jsx](vendor/app.jsx)、[main.js](main.js)、[preload.js](preload.js)、[sw.js](sw.js)。協作先讀 [CONTRIBUTING.md](CONTRIBUTING.md)，讓 Agent 讀 [AGENTS.md](AGENTS.md)；從[本倉 Issues](https://github.com/FreeTWAI-AI/typo-studio/issues)認領、[查看既有 PR](https://github.com/FreeTWAI-AI/typo-studio/pulls)避免重工。
+程式／內容入口：[index.html](index.html)、[vendor/app.jsx](vendor/app.jsx)、[main.js](main.js)、[preload.js](preload.js)、[sw.js](sw.js)。協作先讀 [CONTRIBUTING.md](CONTRIBUTING.md)，讓 Agent 讀 [AGENTS.md](AGENTS.md)；從[本倉 Issues](https://github.com/FreeTWAI/typo-studio/issues)認領、[查看既有 PR](https://github.com/FreeTWAI/typo-studio/pulls)避免重工。
 
-貼文素材與專案留在使用者裝置；匯出圖片不等於平台已發布。修改 JSX 時同步核對既有編譯流程，保留字型／圖像授權與上游來源。 跨 repo 的協定由[中央平台](https://github.com/FreeTWAI-AI/freedom-platform)維護。
+貼文素材與專案留在使用者裝置；匯出圖片不等於平台已發布。修改 JSX 時同步核對既有編譯流程，保留字型／圖像授權與上游來源。 跨 repo 的協定由[中央平台](https://github.com/FreeTWAI/freedom-platform)維護。
 <!-- freedom-repository-guide:end -->
 
 > 中文友善的 Instagram 輪播貼文排版工具 — 桌面版（Windows / macOS）＋ 網頁版 / 手機版（PWA）
