@@ -129,6 +129,8 @@ assets/              圖示與封面
 
 - **無打包器**：刻意維持零 bundler。`vendor/app.jsx` 用 `@babel/preset-react` 編成一個檔，由 `index.html` 直接載入，方便閱讀與 hack。
 - **單檔應用**：所有 UI、預覽渲染與 Canvas 匯出邏輯都在 `vendor/app.jsx`，預覽（DOM）與匯出（Canvas）共用同一套排版引擎以維持一致性。
+- **渲染管線**：關於文字處理、自動排版引擎及畫布匯出的詳細技術說明，請參考 [渲染管線 (Rendering Pipeline)](docs/rendering-pipeline.md)。
+- **匯出格式**：了解支援的匯出格式與專案 JSON 打包流程，請參考 [匯出格式與功能 (Export Formats)](docs/export-formats.md)。
 
 ### 修改原始碼的流程
 1. 編輯 `vendor/app.jsx`
@@ -140,7 +142,7 @@ assets/              圖示與封面
 ---
 
 ## 📝 字型說明（離線）
-字型透過 Google Fonts CDN 載入，**首次需連網**以取得自訂字型；離線時會回退為系統預設字體，版面仍可正常運作與匯出。
+字型透過 Google Fonts CDN 載入，**首次需連網**以取得自訂字型；離線時會回退為系統預設字體，版面仍可正常運作與匯出。關於字型的完整載入與退回機制，請見 [字型處理與解析 (Font Parsing)](docs/font-parsing.md)。
 
 ---
 
