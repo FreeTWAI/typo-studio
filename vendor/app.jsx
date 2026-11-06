@@ -180,16 +180,21 @@ const buildZip=(files)=>{
 /* ══════════ TEXT MEASUREMENT & AUTO-FIT ══════════ */
 const _mcanvas=typeof document!=="undefined"?document.createElement("canvas"):null;
 const _mctx=_mcanvas?_mcanvas.getContext("2d"):null;
-const _measCache=new Map();
+let _measCache=Object.create(null);
+let _measCacheSize=0;
 const measureTextWidth=(text,font)=>{
   if(!_mctx||!text)return 0;
   const key=font+"\n"+text;
-  const hit=_measCache.get(key);
+  const hit=_measCache[key];
   if(hit!==undefined)return hit;
   _mctx.font=font;
   const w=_mctx.measureText(text).width;
-  if(_measCache.size>6000)_measCache.clear();
-  _measCache.set(key,w);
+  if(_measCacheSize>6000){
+    _measCache=Object.create(null);
+    _measCacheSize=0;
+  }
+  _measCache[key]=w;
+  _measCacheSize++;
   return w;
 };
 
